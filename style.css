@@ -7,8 +7,10 @@
     --text-dark: #1f2937;
     --text-light: #4b5563;
     --background-light: #f9fafb;
+    --spacing-xxl: 6rem;
     --spacing-lg: 3rem;
     --spacing-md: 1.5rem;
+    --card-bg: white;
 }
 
 * {
@@ -18,7 +20,8 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Inter Font Kullanımı */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
 }
@@ -28,9 +31,15 @@ a {
     color: inherit;
 }
 
+.section-padding {
+    /* Bölümlere üstten ve alttan dolgu */
+    padding: var(--spacing-xxl) var(--spacing-lg); 
+}
+
 /*
- * NAVBAR (Header)
+ * NAVBAR (Header) - Mevcut Stilleriniz
  */
+/* ... (Navbar stilleri burada devam ediyor) ... */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -43,7 +52,7 @@ a {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color); /* TAO logosu */
+    color: var(--primary-color); 
 }
 
 .nav-links a {
@@ -58,9 +67,8 @@ a {
     color: var(--primary-color);
 }
 
-/* Discord butonu için özel stil */
 .btn-discord {
-    background-color: #5865f2; /* Discord Mavi */
+    background-color: #5865f2; 
     color: white !important;
     padding: 0.5rem 1rem;
     border-radius: 6px;
@@ -73,9 +81,12 @@ a {
     color: white;
 }
 
+
 /*
- * HERO SECTION (Ana Alan)
+ * HERO SECTION (Ana Alan) - Mevcut Stilleriniz
  */
+/* ... (Hero section stilleri burada devam ediyor) ... */
+
 .hero-section {
     display: flex;
     align-items: center;
@@ -88,7 +99,7 @@ a {
 
 .hero-content {
     flex: 1;
-    max-width: 55%; /* İçeriğin genişliği PC'de */
+    max-width: 55%; 
 }
 
 .subtitle {
@@ -122,7 +133,7 @@ a {
     border-radius: 6px;
     font-weight: 600;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    border: 2px solid transparent; /* İkincil buton için */
+    border: 2px solid transparent; 
 }
 
 .btn-primary {
@@ -138,7 +149,7 @@ a {
 .btn-secondary {
     background-color: transparent;
     color: var(--text-dark);
-    border: 2px solid #d1d5db; /* Açık gri border */
+    border: 2px solid #d1d5db; 
 }
 
 .btn-secondary:hover {
@@ -146,88 +157,189 @@ a {
     border-color: #e5e7eb;
 }
 
-/*
- * GRADYENT ANİMASYONU (The Continuous Gradient Animation)
- */
-
-/* Ana CSS Kuralı: Metne Arka Plan Uygula */
 .gradient-text {
-    /* Başlangıç Gradyenti */
     background: linear-gradient(90deg, #f7a53c, #ffcc33, #38bdf8, #52e5b8);
-    /* Gradyentin sadece metnin içine girmesini sağla */
     -webkit-background-clip: text;
     background-clip: text;
-    /* Metni şeffaf yap */
     color: transparent;
-    /* Gradyent arka planı metin boyutundan çok daha büyük yap */
     background-size: 400% 400%;
-    /* Animasyonu başlat */
     animation: gradientShift 8s ease infinite;
-    display: inline-block; /* Gradyent doğru uygulanması için */
+    display: inline-block; 
 }
 
-/* Keyframes: Gradyentin pozisyonunu sürekli değiştir */
 @keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/*
- * GÖRSEL KISIM (Hero Image)
- */
 .hero-image-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 45%; /* Görselin genişliği PC'de */
+    max-width: 45%; 
 }
 
 .hero-image {
     max-width: 100%;
     height: auto;
     display: block;
-    /* Hafif bir kutu gölgesi ekleyerek 3D hissiyatını artırabiliriz */
-    /* filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2)); */
+}
+
+/*
+ * YENİ BÖLÜM STİLLERİ (About & Team)
+ */
+
+/* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış) */
+.section-header {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 900; /* Inter Black (Çok Kalın) */
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.section-info {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Felsefe Kartları (Biz Kimiz) */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Yumuşak gölge */
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Ekip Kartları (Team Section) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.team-member-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.member-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.member-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--background-light); /* Arka plan renginde hafif border */
+}
+
+.role-badge {
+    background-color: #eef2ff; /* Açık mor/mavi ton */
+    color: #4f46e5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px; /* Pill şekli */
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.member-info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.member-info .username {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.member-social a {
+    font-size: 1.25rem;
+    margin-right: 1rem;
+    color: var(--text-light);
+    transition: color 0.2s ease;
+}
+
+.member-social a:hover {
+    color: var(--text-dark);
 }
 
 
 /*
- * RESPONSIVE TASARIM (Mobile & Tablet)
+ * RESPONSIVE TASARIM (Mobile & Tablet) - Güncel
  */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
 
 /* 768px ve altındaki cihazlar (Tabletler ve Mobil Cihazlar) */
 @media (max-width: 768px) {
-    /* Navbar'ı gizle ve Mobil menü ikonunu göster */
+    /* ... (Mevcut Hero Section Mobil Stilleri) ... */
     .nav-links {
-        display: none; /* Mobilde bağlantıları gizliyoruz */
+        display: none; 
     }
 
-    /* Hero Section Dikey Düzen */
     .hero-section {
-        flex-direction: column; /* İçeriği alt alta sırala */
+        flex-direction: column; 
         padding: 2rem var(--spacing-md);
     }
 
     .hero-content {
-        max-width: 100%; /* İçeriği tam genişlik yap */
-        order: 2; /* İçeriği görselin altına taşı */
+        max-width: 100%; 
+        order: 2; 
     }
     
     .hero-image-container {
-        max-width: 80%; /* Görselin mobilde sığması */
+        max-width: 80%; 
         margin-bottom: 2rem;
-        order: 1; /* Görseli üste taşı */
+        order: 1; 
     }
 
-    /* Başlık Boyutu */
     .title {
         font-size: 2.2rem;
     }
@@ -236,20 +348,38 @@ a {
         font-size: 1rem;
     }
 
-    /* Butonlar dikey sıralanabilir (isteğe bağlı) */
     .actions {
         flex-direction: column;
         gap: 0.75rem;
     }
     
     .btn {
-        width: 100%; /* Butonları tam genişlik yap */
+        width: 100%; 
         text-align: center;
     }
     
-    /* Navbar Padding */
     .navbar {
         padding: 1rem var(--spacing-md);
+    }
+    
+    /* Yeni Bölüm Mobil Stilleri */
+    .section-padding {
+        padding: 4rem var(--spacing-md); /* Mobil cihazlarda daha az boşluk */
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+        padding: 0 var(--spacing-md);
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .philosophy-grid,
+    .team-grid {
+        grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+        padding: 0 var(--spacing-md);
     }
 }
 
