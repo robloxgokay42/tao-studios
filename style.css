@@ -24,7 +24,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
-    /* YUMUŞAK KAYDIRMA ÖZELLİĞİ EKLENDİ */
+    /* YUMUŞAK KAYDIRMA ÖZELLİĞİ */
     scroll-behavior: smooth;
 }
 
@@ -47,9 +47,9 @@ a {
     padding: 1rem var(--spacing-lg);
     background-color: white;
     border-bottom: 1px solid #e5e7eb;
-    position: sticky; /* Sayfa kaydırıldığında yukarıda kalır */
+    position: sticky; 
     top: 0;
-    z-index: 100; /* Diğer içeriklerin üstünde kalmasını sağlar */
+    z-index: 100; 
 }
 
 .logo {
@@ -228,7 +228,7 @@ a {
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: default; /* Karta tıklanmadığı için */
+    cursor: default; 
 }
 
 /* BİZ KİMİZ KART HOVER EFECTİ */
@@ -319,22 +319,8 @@ a {
 .member-info .username {
     color: var(--text-light);
     font-size: 0.9rem;
-    /* Sosyal medya ikonları kaldırıldığı için bu boşluğu azaltıyoruz */
     margin-bottom: 0; 
 }
-
-/* Sosyal medya alanı tamamen kaldırıldığı için aşağıdaki stilin artık bir önemi yok, ama temizlik için bırakabiliriz
-.member-social a {
-    font-size: 1.25rem;
-    margin-right: 1rem;
-    color: var(--text-light);
-    transition: color 0.2s ease;
-}
-
-.member-social a:hover {
-    color: var(--text-dark);
-}
-*/
 
 
 /*
@@ -491,7 +477,7 @@ a {
     color: var(--text-light);
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Mobil görünümde taşmayı engeller */
+    flex-wrap: wrap; 
 }
 
 .wiki-meta .author-role {
@@ -614,7 +600,7 @@ a {
     }
     
     .nav-links {
-        display: none; /* Basitlik için mobil menüyü gizle */
+        display: none; 
     }
 
     .search-filter-bar {
