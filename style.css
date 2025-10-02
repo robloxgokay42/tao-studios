@@ -4,13 +4,13 @@
 :root {
     --primary-color: #f7a53c; /* Turuncu-sarı ton */
     --secondary-color: #38bdf8; /* Açık mavi ton */
-    --text-dark: #1f2937;
-    --text-light: #4b5563;
+    --text-dark: #1f2937; /* Koyu Gri (Başlıklar) */
+    --text-light: #4b5563; /* Açık Koyu Gri (Paragraflar) */
     --background-light: #f9fafb; /* Açık gri arka plan */
+    --card-bg: white;
     --spacing-xxl: 6rem;
     --spacing-lg: 3rem;
     --spacing-md: 1.5rem;
-    --card-bg: white;
 }
 
 * {
@@ -45,6 +45,9 @@ a {
     padding: 1rem var(--spacing-lg);
     background-color: white;
     border-bottom: 1px solid #e5e7eb;
+    position: sticky; /* Sayfa kaydırıldığında yukarıda kalır */
+    top: 0;
+    z-index: 100; /* Diğer içeriklerin üstünde kalmasını sağlar */
 }
 
 .logo {
@@ -185,10 +188,10 @@ a {
 }
 
 /*
- * BÖLÜM STİLLERİ (About & Team)
+ * BÖLÜM STİLLERİ (About, Games & Team)
  */
 
-/* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış) */
+/* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış, Oyunlar) */
 .section-header {
     max-width: 1400px;
     margin: 0 auto 3rem;
@@ -319,7 +322,7 @@ a {
 
 
 /*
- * WIKI/BLOG STİLLERİ
+ * WIKI/BLOG STİLLERİ (wiki.html ve article.html)
  */
 .wiki-main {
     background-color: var(--background-light);
@@ -472,6 +475,7 @@ a {
     color: var(--text-light);
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Mobil görünümde taşmayı engeller */
 }
 
 .wiki-meta .author-role {
@@ -485,7 +489,7 @@ a {
 }
 
 .wiki-meta .author-role.medya {
-    /* Medya Ekibi rolü için renk (image_397f70.png'den türetilmiştir) */
+    /* Medya Ekibi rolü için renk */
     background-color: #fef2f2;
     color: #ef4444;
 }
@@ -514,10 +518,11 @@ a {
     margin-bottom: 2rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 1rem;
+    flex-wrap: wrap; 
+    gap: 0.5rem 1.5rem;
 }
 
 .meta-bar .author-info {
-    margin-right: 1.5rem;
     display: flex;
     align-items: center;
 }
@@ -563,24 +568,63 @@ a {
 }
 
 /* Responsive Düzenlemeler */
+@media (max-width: 1024px) {
+    .section-padding {
+        padding: 4rem var(--spacing-md);
+    }
+}
+
 @media (max-width: 768px) {
-    /* ... (Diğer Mobil Stiller) ... */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem var(--spacing-md);
+    }
+    
+    .hero-content, .hero-image-container {
+        max-width: 100%;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .actions {
+        justify-content: center;
+    }
+    
+    .navbar {
+        padding: 1rem var(--spacing-md);
+    }
+    
+    .nav-links {
+        display: none; /* Basitlik için mobil menüyü gizle */
+    }
 
     .search-filter-bar {
         flex-direction: column;
         padding: 1rem;
+        align-items: stretch;
     }
     
     .search-input-group, .filter-group, .checkbox-group, .btn-search {
         width: 100%;
         max-width: none;
+        margin: 0.25rem 0;
     }
 
-    .btn-search {
-        margin-top: 0.5rem;
-    }
-    
     .wiki-header-container, .wiki-articles-grid, .article-container {
         padding: 0 var(--spacing-md);
+    }
+
+    .article-container {
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
+    .article-header .meta-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem 0;
     }
 }
