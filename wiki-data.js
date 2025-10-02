@@ -31,61 +31,65 @@ const wikiArticles = [
     {
         id: 2,
         slug: "jandarma-liderleri",
-        title: "TA | Jandarma Liderleri",
-        summary: "TA içerisinde tarihler boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.",
-        author: "sbagarry",
-        authorRole: "Medya Ekibi",
-        date: "22 Eylül 2025 04:58",
+        title: "TAO | Jandarma Liderleri",
+        summary: "TAO içerisinde tarihler boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.",
+        author: "SilaFriztche",
+        authorRole: "Yönetici",
+        date: "2 Ekim 2025 21.18",
         category: "Wiki",
-        isEdited: true,
-        editedBy: "sbagarry",
-        editorRole: "Medya Ekibi",
-        editedDate: "26 Eylül 2025 02:51",
+        isEdited: false,
+        editedBy: "SilaFriztche",
+        editorRole: "Yönetici",
+        editedDate: "2 Ekim 2025 21.18",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
-            <h2>TA | Jandarma Liderleri Tarihi</h2>
-            <p>Bu liste, TA (Team Arena) içerisinde Jandarma Liderliği görevini üstlenmiş tüm değerli kişileri kronolojik sırayla göstermektedir. Bu görev, organizasyonun düzenini ve disiplinini sağlamak açısından büyük önem taşımaktadır.</p>
+            <h2>TAO | Jandarma Liderleri Tarihi</h2>
+            <p>Bu liste, TAO içerisinde Jandarma Liderliği görevini üstlenmiş tüm değerli kişileri kronolojik sırayla göstermektedir. Bu görev, organizasyonun düzenini ve disiplinini sağlamak açısından büyük önem taşımaktadır.</p>
             
             <h3>Tarihsel Dönemler</h3>
             <p>Jandarma Liderliği, her dönemde farklı zorluklarla mücadele etmiş ve organizasyonun temel direklerinden biri olmuştur.</p>
             
             <ol>
-                <li><strong>Kişi A</strong> - (2018-2019): İlk dönem lideri, temel kuralları belirledi.</li>
-                <li><strong>Kişi B</strong> - (2019-2021): Savaş dönemi boyunca disiplini korudu.</li>
-                <li><strong>Kişi C</strong> - (2021-2023): Modernizasyon ve eğitim programlarını başlattı.</li>
-                <li><strong>Kişi D</strong> - (2023-Günümüz): Mevcut liderlik, yenilikçi yaklaşımlarla liderliği sürdürüyor.</li>
+                <li><strong>sametreyiz_3</strong> - (2022): İlk dönem lideri, Jandarma'yı kurdu.</li>
+                <li><strong>SilaFriztche</strong> - (2024): Geçici Jandarma lideri.</li>
+                <li><strong>mertbaba_450</strong> - (2025): Jandarma'ya yüksek aktiflik kazandırarak rekorlar kırdırmış bir lider.</li>
+                <li><strong>AYAZ_ECERBERFN</strong> - (2025): Jandarma'nın yükselişini sabit tutan bir lider..</li>
             </ol>
             
-            <p>Onların çabaları ve liderlikleri sayesinde TA topluluğu her zaman daha güçlü ve düzenli kalmıştır.</p>
+            <p>Onların çabaları ve liderlikleri sayesinde TAO topluluğu her zaman daha güçlü ve düzenli kalmıştır.</p>
         `
     },
     {
-        id: 3,
-        slug: "deniz-kuvvetleri-liderleri",
-        title: "TA | Deniz Kuvvetleri Liderleri",
-        summary: "TA içerisinde tarihler boyunca Deniz Kuvvetleri Liderliği yapmış kişilerin bulunduğu bölüm.",
-        author: "sbagarry",
-        authorRole: "Medya Ekibi",
-        date: "22 Eylül 2025 04:52",
+       id: 2,
+        slug: "jandarma-liderleri",
+        title: "TAO | Jandarma Liderleri",
+        summary: "TAO içerisinde tarihler boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.",
+        author: "SilaFriztche",
+        authorRole: "Yönetici",
+        date: "2 Ekim 2025 21.23",
         category: "Wiki",
         isEdited: false,
+        editedBy: "SilaFriztche",
+        editorRole: "Yönetici",
+        editedDate: "2 Ekim 2025 21.18",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
-            <h2>TA | Deniz Kuvvetleri Liderleri Tarihçesi</h2>
-            <p>TA (Team Arena) bünyesinde Deniz Kuvvetleri'ne komuta etmiş liderlerin listesi aşağıdadır. Bu liderler, deniz operasyonlarında ve kıyı güvenliğinde hayati rol oynamışlardır.</p>
+            <h2>TAO | Askeri İnzibat Liderleri Tarihçesi</h2>
+            <p>TAO bünyesinde Askeri İnzibat'a komuta etmiş liderlerin listesi aşağıdadır. Bu liderler, TAO'nun disiplin yönetiminde büyük roller almışlardır.</p>
             
-            <h3>Operasyonel Başarılar</h3>
-            <p>Deniz Kuvvetleri, stratejik deniz operasyonlarımızda her zaman öncü rol oynamıştır.</p>
+            <h3>Tarihsel Dönemler</h3>
+            <p>Askeri İnzibat, TAO'nun disiplinini en usta şekilde yönlendirmiştir..</p>
             
             <ul>
-                <li><strong>Lider 1</strong> - (2019): Büyük Mavi Operasyonunu yönetti.</li>
-                <li><strong>Lider 2</strong> - (2020-2022): Güvenlik alanını iki katına çıkaran genişleme projesine liderlik etti.</li>
-                <li><strong>Lider 3</strong> - (2022-2024): Modern deniz araçları entegrasyonunu tamamladı.</li>
+                <li><strong>sametreyiz_3</strong> - (2022): İlk lider, İnzibat'ı kurdu.</li>
+                <li><strong>EYO_KRAL125127</strong> - (2024): İnzibat'ın gelişimini yöneltti.</li>
+                <li><strong>31_Berkc/strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
+                <li><strong>tasm483/strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
             </ul>
             
-            <p>Denizdeki gücümüz, bu liderlerin vizyonu sayesinde büyümüştür.</p>
+            <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
         `
     }
     // YENİ MAKALELERİNİZİ BURAYA EKLEYİN.
