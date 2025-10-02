@@ -3,7 +3,7 @@ const WIKI_ARTICLES = [
     {
         id: 'wikiye-merhaba',
         title: "Wiki'ye Merhaba 👋",
-        author: 'SilaFriztche', // GÜNCELLENDİ
+        author: 'SilaFriztche', 
         role: 'Yönetici',
         date: '19 Eylül 2025 21:56',
         category: 'Duyurular',
