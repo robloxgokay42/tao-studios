@@ -62,9 +62,9 @@ const wikiArticles = [
     },
     {
        id: 2,
-        slug: "jandarma-liderleri",
-        title: "TAO | Jandarma Liderleri",
-        summary: "TAO içerisinde tarihler boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.",
+        slug: "askeri-inzibat-liderleri",
+        title: "TAO | Askeri İnzibat Liderleri",
+        summary: "TAO içerisinde tarihler boyunca İnzibat Liderliği yapmış kişilerin bulunduğu bölüm.",
         author: "SilaFriztche",
         authorRole: "Yönetici",
         date: "2 Ekim 2025 21.23",
