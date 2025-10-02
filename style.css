@@ -1,0 +1,261 @@
+/*
+ * GENEL STİLLER (Global Styles)
+ */
+:root {
+    --primary-color: #f7a53c; /* Turuncu-sarı ton */
+    --secondary-color: #38bdf8; /* Açık mavi ton */
+    --text-dark: #1f2937;
+    --text-light: #4b5563;
+    --background-light: #f9fafb;
+    --spacing-lg: 3rem;
+    --spacing-md: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*
+ * NAVBAR (Header)
+ */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem var(--spacing-lg);
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color); /* TAO logosu */
+}
+
+.nav-links a {
+    margin-left: var(--spacing-md);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Discord butonu için özel stil */
+.btn-discord {
+    background-color: #5865f2; /* Discord Mavi */
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 2rem !important;
+}
+
+.btn-discord:hover {
+    background-color: #4b55e1;
+    color: white;
+}
+
+/*
+ * HERO SECTION (Ana Alan)
+ */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem var(--spacing-lg);
+    gap: 3rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 55%; /* İçeriğin genişliği PC'de */
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 2px solid transparent; /* İkincil buton için */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #e69634;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid #d1d5db; /* Açık gri border */
+}
+
+.btn-secondary:hover {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+}
+
+/*
+ * GRADYENT ANİMASYONU (The Continuous Gradient Animation)
+ */
+
+/* Ana CSS Kuralı: Metne Arka Plan Uygula */
+.gradient-text {
+    /* Başlangıç Gradyenti */
+    background: linear-gradient(90deg, #f7a53c, #ffcc33, #38bdf8, #52e5b8);
+    /* Gradyentin sadece metnin içine girmesini sağla */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Metni şeffaf yap */
+    color: transparent;
+    /* Gradyent arka planı metin boyutundan çok daha büyük yap */
+    background-size: 400% 400%;
+    /* Animasyonu başlat */
+    animation: gradientShift 8s ease infinite;
+    display: inline-block; /* Gradyent doğru uygulanması için */
+}
+
+/* Keyframes: Gradyentin pozisyonunu sürekli değiştir */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/*
+ * GÖRSEL KISIM (Hero Image)
+ */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 45%; /* Görselin genişliği PC'de */
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Hafif bir kutu gölgesi ekleyerek 3D hissiyatını artırabiliriz */
+    /* filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.2)); */
+}
+
+
+/*
+ * RESPONSIVE TASARIM (Mobile & Tablet)
+ */
+
+/* 768px ve altındaki cihazlar (Tabletler ve Mobil Cihazlar) */
+@media (max-width: 768px) {
+    /* Navbar'ı gizle ve Mobil menü ikonunu göster */
+    .nav-links {
+        display: none; /* Mobilde bağlantıları gizliyoruz */
+    }
+
+    /* Hero Section Dikey Düzen */
+    .hero-section {
+        flex-direction: column; /* İçeriği alt alta sırala */
+        padding: 2rem var(--spacing-md);
+    }
+
+    .hero-content {
+        max-width: 100%; /* İçeriği tam genişlik yap */
+        order: 2; /* İçeriği görselin altına taşı */
+    }
+    
+    .hero-image-container {
+        max-width: 80%; /* Görselin mobilde sığması */
+        margin-bottom: 2rem;
+        order: 1; /* Görseli üste taşı */
+    }
+
+    /* Başlık Boyutu */
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    /* Butonlar dikey sıralanabilir (isteğe bağlı) */
+    .actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        width: 100%; /* Butonları tam genişlik yap */
+        text-align: center;
+    }
+    
+    /* Navbar Padding */
+    .navbar {
+        padding: 1rem var(--spacing-md);
+    }
+}
+
+/* Küçük Mobil Cihazlar (320px - 480px) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+}
