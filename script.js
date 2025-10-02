@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
 
                 if (article.isEdited) {
-                    // Düzenlendi bilgisi (Önceki görseldeki formatı koruyoruz)
                     metaHTML += `
                     <span class="editor-info" style="margin-left: 1.5rem;">
                         • Düzenlendi: ${article.author} <span class="wiki-badge role-badge ${roleClass}">${article.role}</span> — 26 Eylül 2025 02:51
