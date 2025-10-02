@@ -2,13 +2,13 @@ const wikiArticles = [
     {
         id: 1,
         slug: "wiki-ye-merhaba",
-        title: "Wiki'ye Merhaba",
-        summary: "TA Studios'un resmi Wiki / blog yazısı hoş geldin bölümü ve platformun amacına dair bilgiler.",
-        author: "spaceleafs",
+        title: "Wiki'ye Merhaba👋🏻",
+        summary: "TAO Studios'un resmi Wiki / blog yazısı hoş geldin bölümü!",
+        author: "SilaFriztche",
         authorRole: "Yönetici",
-        date: "19 Eylül 2025 21:56",
+        date: "2 Ekim 2025 21:13",
         category: "Duyurular",
-        isEdited: true,
+        isEdited: false,
         isPinned: true, // SABİTLENMİŞ: EN BAŞTA GÖRÜNÜR
         // MAKALENİN İÇERİĞİ
         content: `
@@ -25,7 +25,7 @@ const wikiArticles = [
             
             <p>Keyifli okumalar dileriz!</p>
             
-            <p>Saygılarımızla, <br>TAO Studios Ekibi</p>
+            <p>Saygılarımızla, <h3>TAO Studios Ekibi</h3>
         `
     },
     {
