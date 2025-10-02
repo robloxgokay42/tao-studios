@@ -24,6 +24,8 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
+    /* YUMUŞAK KAYDIRMA ÖZELLİĞİ EKLENDİ */
+    scroll-behavior: smooth;
 }
 
 a {
@@ -267,12 +269,13 @@ a {
     align-items: flex-start;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
+    /* Sosyal medya ikonları kaldırıldığı için kartları biraz daha kompakt yapıyoruz */
+    padding-bottom: 1.5rem; 
 }
 
-/* EKİP KART HOVER ANİMASYONU: Büyüme ve Çerçeve Efekti (İsteğe göre eklendi) */
+/* EKİP KART HOVER ANİMASYONU: Büyüme ve Çerçeve Efekti */
 .team-member-card:hover {
     transform: translateY(-5px) scale(1.01);
-    /* Çerçeve rengini (border-color) ana renk yaptık */
     box-shadow: 0 0 0 2px var(--primary-color), 
                 0 15px 20px -5px rgba(0, 0, 0, 0.1); 
 }
@@ -316,9 +319,11 @@ a {
 .member-info .username {
     color: var(--text-light);
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    /* Sosyal medya ikonları kaldırıldığı için bu boşluğu azaltıyoruz */
+    margin-bottom: 0; 
 }
 
+/* Sosyal medya alanı tamamen kaldırıldığı için aşağıdaki stilin artık bir önemi yok, ama temizlik için bırakabiliriz
 .member-social a {
     font-size: 1.25rem;
     margin-right: 1rem;
@@ -329,6 +334,7 @@ a {
 .member-social a:hover {
     color: var(--text-dark);
 }
+*/
 
 
 /*
