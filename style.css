@@ -32,15 +32,7 @@ a {
 }
 
 .section-padding {
-    /* Bölümlere üstten ve alttan dolgu */
     padding: var(--spacing-xxl) var(--spacing-lg); 
-}
-
-/* İçeriği ortalamak için bir kapsayıcı (Hero Section'da kullanıldı) */
-.max-width-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
 }
 
 /*
@@ -193,7 +185,7 @@ a {
 }
 
 /*
- * YENİ BÖLÜM STİLLERİ (About & Team)
+ * BÖLÜM STİLLERİ (About & Team & Stats)
  */
 
 /* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış) */
@@ -255,14 +247,12 @@ a {
 
 .team-member-card {
     background-color: var(--card-bg);
-    padding: 2rem; /* Daha geniş dolgu */
-    border-radius: 12px;
-    /* Daha belirgin, yumuşak gölge */
+    padding: 2rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Animasyon geçişleri */
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
 }
@@ -270,7 +260,6 @@ a {
 /* HOVER ANİMASYONU: Siyah Çerçeve ve Büyüme Efekti */
 .team-member-card:hover {
     transform: translateY(-5px) scale(1.01);
-    /* Siyah Çerçeve (ring) ve derinlik */
     box-shadow: 0 0 0 2px var(--text-dark), 
                 0 15px 20px -5px rgba(0, 0, 0, 0.1); 
 }
@@ -325,6 +314,48 @@ a {
 }
 
 .member-social a:hover {
+    color: var(--text-dark);
+}
+
+/* İSTATİSTİKLER BÖLÜMÜ (Stats Section) */
+.stats-section {
+    background-color: var(--background-light); 
+}
+
+.stats-section .section-header {
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.stat-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 3rem; 
+    font-weight: 900; 
+    line-height: 1;
     color: var(--text-dark);
 }
 
@@ -385,7 +416,7 @@ a {
         padding: 1rem var(--spacing-md);
     }
     
-    /* Yeni Bölüm Mobil Stilleri */
+    /* Bölüm Mobil Stilleri */
     .section-padding {
         padding: 4rem var(--spacing-md); 
     }
@@ -399,16 +430,22 @@ a {
         font-size: 1.8rem;
     }
     
+    /* Tek sütunlu ızgaralar */
     .philosophy-grid,
-    .team-grid {
-        grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+    .team-grid,
+    .stats-grid {
+        grid-template-columns: 1fr; 
         padding: 0 var(--spacing-md);
     }
     
-    /* Hover efektinin mobilde gereksiz büyümesini engelle */
+    /* Mobil için kart animasyonunu kaldır */
     .team-member-card:hover {
         transform: none;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-value {
+        font-size: 2.5rem;
     }
 }
 
