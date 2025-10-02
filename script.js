@@ -154,14 +154,13 @@ function renderArticle(slug) {
     const article = wikiArticles.find(a => a.slug === slug);
     const container = document.getElementById('article-container');
     
-    // Eğer makale bulunamazsa 404 benzeri bir mesaj göster
+    // Eğer makale bulunamazsa
     if (!article) {
         document.getElementById('article-title').textContent = "Makale Bulunamadı";
-        container.innerHTML = `
+        document.getElementById('article-main-title').textContent = "Makale Bulunamadı";
+        document.getElementById('article-content').innerHTML = `
             <div style="text-align: center; padding: 4rem 0;">
-                <h1>404</h1>
                 <p>Aradığınız makale bulunamadı veya silinmiş.</p>
-                <a href="wiki.html" style="margin-top: 2rem; display: block;">Wiki Ana Sayfasına Dön</a>
             </div>
         `;
         return;
@@ -194,25 +193,6 @@ function renderArticle(slug) {
         ${editedByHtml}
     `;
 
-    // Makale içeriği (makalenin kendi dosyasından çekeceğiz)
-    fetch(`${article.slug}.html`)
-        .then(response => {
-            if (!response.ok) {
-                // Eğer makale dosyası bulunamazsa
-                throw new Error('Makale içeriği dosyası bulunamadı.');
-            }
-            return response.text();
-        })
-        .then(htmlContent => {
-            // HTML içeriğinden sadece article-content div'ini almalıyız
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(htmlContent, 'text/html');
-            const content = doc.getElementById('article-content') ? doc.getElementById('article-content').innerHTML : 'İçerik yüklenemedi.';
-            
-            document.getElementById('article-content').innerHTML = content;
-        })
-        .catch(error => {
-            console.error('Makale içeriği yüklenirken hata oluştu:', error);
-            document.getElementById('article-content').innerHTML = '<p>Makale içeriği yüklenirken bir hata oluştu.</p>';
-        });
+    // MAKALENİN İÇERİĞİNİ DİNAMİK OLARAK YÜKLE
+    document.getElementById('article-content').innerHTML = article.content;
 }
