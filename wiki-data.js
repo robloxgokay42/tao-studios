@@ -19,8 +19,8 @@ const wikiArticles = [
             <p>Amacımız, oyuncu topluluğumuzun merak ettiği her şeyi şeffaf bir şekilde sunmaktır. Burada sadece resmi duyurular değil, aynı zamanda uzun soluklu oyunlarımızın tarihçesi ve lider kadromuz hakkındaki bilgileri de bulacaksınız.</p>
             <ul>
                 <li><strong>Duyurular:</strong> Yeni oyunlar, güncellemeler ve etkinlikler.</li>
-                <li><strong>31_Berkc</strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
-                <li><strong>tasm483</strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
+                <li><strong>Etkinlikler:</strong> Oyun içerisinde yapılan etkinlik ve törenler.</li>
+                <li><strong>Tarihçe:</strong> Stüdyomuzun nasıl gelişip yükseldiği hakkınde bilgilendirmeler.</li>
 
             </ul>
             
@@ -86,8 +86,8 @@ const wikiArticles = [
             <ul>
                 <li><strong>sametreyiz_3</strong> - (2022): İlk lider, İnzibat'ı kurdu.</li>
                 <li><strong>EYO_KRAL125127</strong> - (2024): İnzibat'ın gelişimini yöneltti.</li>
-                <li><strong>31_Berkc/strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
-                <li><strong>tasm483/strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
+                <li><strong>31_Berkc</strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
+                <li><strong>tasm483</strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
             </ul>
             
             <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
