@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki / Blog - TAO Studios</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="icon" href="https://i.imgur.com/s7mpbPZ.png" type="image/png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="wiki-data.js"></script>
+    <script src="script.js" defer></script> 
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">TAO Studios</div>
+        <nav class="nav-links">
+            <a href="index.html#about">Hakkımızda</a>
+            <a href="index.html#team">Ekip</a>
+            <a href="index.html#games">Oyunlar</a>
+            <a href="index.html#tickets">Biletler</a>
+            <a href="wiki.html">Wiki</a> 
+            <a href="#" class="btn btn-discord">Discord'a Katıl</a>
+        </nav>
+    </header>
+
+    <main class="wiki-main">
+        <section class="wiki-list-section section-padding">
+            <div class="wiki-header-container">
+                <h1 class="wiki-title">Wiki / Blog</h1>
+            </div>
+
+            <div class="search-filter-bar">
+                <div class="search-input-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Başlık Ara">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="categoryFilter">
+                        <option value="Tümü">Tümü (Kategori)</option>
+                        </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="pinnedFilter">
+                    <label for="pinnedFilter">Sabitlenenleri göster</label>
+                </div>
+
+                <button class="btn-search"><i class="fas fa-search"></i> Ara</button>
+            </div>
+
+            <div id="wiki-articles-container" class="wiki-articles-grid">
+                </div>
+        </section>
+    </main>
+
+</body>
+</html>
