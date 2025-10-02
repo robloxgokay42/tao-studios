@@ -1,90 +1,153 @@
-// TAO Studios JavaScript Dosyası
+// TAO Studios Wiki Sistemi JavaScript Dosyası
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- AYARLAR (SETTINGS) ---
-    // ÖNEMLİ: Proxy sunucunuzu (Vercel/Netlify) kurduktan sonra 
-    // buradaki 'LOCAL_SIMULATION_URL' değerini, aldığınız gerçek URL ile değiştirin!
-    // Örneğin: 'https://SİZİN-PROXY-ADRESİNİZ/api/roblox-stats'
-    const API_URL = 'LOCAL_SIMULATION_URL'; 
-    
-    // API'den veri gelmezse kullanılacak sabit (fallback) değerler (Sizin ID'lerinize göre)
-    const FALLBACK_STATS = {
-        totalMembers: 33995703 > 1000 ? 33995703 / 1000 : 33995703, // Örnek olarak 33.995 olarak varsayıldı
-        playersOnline: 350,
-        totalVisits: 25602531 
-    };
+    // --- GENEL YARDIMCI FONKSİYONLAR ---
+    // URL parametresini alma
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
 
-    const animationDuration = 2000; // 2 saniye animasyon süresi
-
-    // --- YARDIMCI FONKSİYONLAR ---
-    
-    // Sayıları binlik ayraçlarla biçimlendirir (ör: 533.660)
-    function formatNumber(num) {
-        // Rakamlar büyük olduğu için, sadece toLocaleString'i kullanmak daha iyidir
-        // Ancak tarayıcı desteği için basit bir regex de kullanabiliriz:
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
-    // Tek bir eleman için sayma animasyonunu çalıştırır
-    function animateCounter(counterElement, target) {
-        const start = 0;
-        let startTime = null;
-
-        const step = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            
-            const progress = timestamp - startTime;
-            const percentage = Math.min(progress / animationDuration, 1);
-            
-            const currentValue = Math.floor(percentage * (target - start)) + start;
-            
-            counterElement.textContent = formatNumber(currentValue);
-
-            if (percentage < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                counterElement.textContent = formatNumber(target);
-            }
-        };
-
-        window.requestAnimationFrame(step);
-    }
-    
-    // --- ANA FONKSİYON: VERİ ÇEKME VE ANİMASYON ---
-    
-    async function loadAndAnimateStats() {
-        let statsData = FALLBACK_STATS;
-
-        // İstatistik elementlerini seç
-        const memberElement = document.querySelector('.stat-card:nth-child(1) .stat-value');
-        const onlineElement = document.querySelector('.stat-card:nth-child(2) .stat-value');
-        const visitElement = document.querySelector('.stat-card:nth-child(3) .stat-value');
-
-        try {
-            if (API_URL !== 'LOCAL_SIMULATION_URL') {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error('API yanıtı başarısız oldu.');
-                }
-                statsData = await response.json(); 
-            }
-            
-            // Veriyi uygula ve animasyonu başlat
-            animateCounter(memberElement, statsData.totalMembers || FALLBACK_STATS.totalMembers);
-            animateCounter(onlineElement, statsData.playersOnline || FALLBACK_STATS.playersOnline);
-            animateCounter(visitElement, statsData.totalVisits || FALLBACK_STATS.totalVisits);
-
-        } catch (error) {
-            console.error("İstatistikler yüklenirken hata oluştu. Sabit veriler kullanılıyor:", error);
-            
-            // Hata durumunda sabit verilerle animasyonu çalıştır.
-            animateCounter(memberElement, FALLBACK_STATS.totalMembers);
-            animateCounter(onlineElement, FALLBACK_STATS.playersOnline);
-            animateCounter(visitElement, FALLBACK_STATS.totalVisits);
+    // --- BÖLÜM 1: WIKI LİSTELEME VE FİLTRELEME (wiki.html) ---
+    if (document.getElementById('wiki-articles-container')) {
+        const container = document.getElementById('wiki-articles-container');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const pinnedFilter = document.getElementById('pinnedFilter');
+        const searchButton = document.querySelector('.btn-search');
+        
+        // Kategori filtrelerini doldur
+        function populateCategories() {
+            // WIKI_ARTICLES, wiki-data.js'den gelir (Global değişken)
+            const categories = [...new Set(WIKI_ARTICLES.map(article => article.category))];
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
         }
+
+        // Makale kartını oluşturma fonksiyonu
+        function createArticleCard(article) {
+            const card = document.createElement('a');
+            // article.html sayfasına ID parametresiyle yönlendirir
+            card.href = `article.html?id=${article.id}`; 
+            card.className = 'wiki-card';
+
+            let badgesHTML = '';
+            if (article.isEdited) {
+                badgesHTML += `<span class="wiki-badge badge-edited">Düzenlendi</span>`;
+            }
+            if (article.isPinned) {
+                badgesHTML += `<span class="wiki-badge badge-pinned">Sabit</span>`;
+            }
+
+            // İlk 150 karakteri özet olarak al
+            const summaryText = article.content.replace(/<[^>]*>/g, '').substring(0, 150).trim() + '...';
+
+            // Rol bazlı sınıflandırma için
+            const roleClass = article.role === 'Medya Ekibi' ? 'medya' : '';
+
+            card.innerHTML = `
+                <div>
+                    <h2>${article.title}</h2>
+                    <span class="wiki-badges">${badgesHTML}</span>
+                </div>
+                <p class="wiki-summary">${summaryText}</p>
+                <div class="wiki-meta">
+                    <span class="author-role ${roleClass}">${article.author} (${article.role})</span>
+                    <span>— ${article.date.split(' ')[0]} • ${article.category}</span>
+                </div>
+            `;
+            return card;
+        }
+
+        // Filtreleme ve Arama İşlevini Çalıştıran Ana Fonksiyon
+        function renderArticles() {
+            container.innerHTML = '';
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+            const showPinned = pinnedFilter.checked;
+
+            const filteredArticles = WIKI_ARTICLES.filter(article => {
+                const matchesSearch = article.title.toLowerCase().includes(searchTerm);
+                const matchesCategory = selectedCategory === 'Tümü' || article.category === selectedCategory;
+                const matchesPinned = !showPinned || article.isPinned;
+                
+                return matchesSearch && matchesCategory && matchesPinned;
+            });
+
+            if (filteredArticles.length === 0) {
+                container.innerHTML = '<p style="padding: 2rem; text-align: center;">Aradığınız kriterlere uygun makale bulunamadı.</p>';
+            } else {
+                // Sabitlenmiş makaleleri en üste koy
+                filteredArticles.sort((a, b) => (b.isPinned - a.isPinned));
+                
+                filteredArticles.forEach(article => {
+                    container.appendChild(createArticleCard(article));
+                });
+            }
+        }
+
+        // Olay Dinleyicileri
+        searchButton.addEventListener('click', renderArticles);
+        searchInput.addEventListener('input', renderArticles);
+        categoryFilter.addEventListener('change', renderArticles);
+        pinnedFilter.addEventListener('change', renderArticles);
+
+        // Başlangıçta çalıştır
+        populateCategories();
+        renderArticles();
     }
-    
-    loadAndAnimateStats();
+
+
+    // --- BÖLÜM 2: WIKI DETAY SAYFASI (article.html) ---
+    else if (document.getElementById('article-container')) {
+        const container = document.getElementById('article-container');
+        
+        function loadArticle() {
+            if (!articleId) {
+                container.innerHTML = '<h1 style="text-align: center;">Geçersiz Makale Kimliği</h1>';
+                return;
+            }
+
+            const article = WIKI_ARTICLES.find(a => a.id === articleId);
+
+            if (article) {
+                document.getElementById('article-title').textContent = article.title;
+                document.getElementById('article-main-title').textContent = article.title;
+                
+                // Rol sınıfı belirleme
+                const roleClass = article.role === 'Medya Ekibi' ? 'medya' : '';
+
+                // Yazar ve Düzenleme Meta Bilgisi (Görseldeki formatı taklit eder)
+                let metaHTML = `
+                    <span class="author-info">
+                        ${article.author} <span class="wiki-badge role-badge ${roleClass}">${article.role}</span>
+                    </span>
+                    <span class="date-info">
+                        — ${article.date} • ${article.category}
+                    </span>
+                `;
+
+                // Eğer düzenlendiyse, düzenlenme bilgisini ekle
+                if (article.isEdited) {
+                    metaHTML += `
+                    <span class="editor-info">
+                        • Düzenlendi: ${article.author} <span class="wiki-badge role-badge ${roleClass}">${article.role}</span> — 26 Eylül 2025 02:51
+                    </span>
+                    `; // Düzenleyen tarihini sabit tuttuk, isterseniz veri yapısına ekleyebiliriz
+                }
+
+                document.getElementById('article-author-meta').innerHTML = metaHTML;
+                document.getElementById('article-content').innerHTML = article.content;
+
+            } else {
+                container.innerHTML = '<h1 style="text-align: center;">Makale Bulunamadı (404)</h1><p style="text-align: center; margin-top: 1rem;"><a href="wiki.html" class="back-to-wiki">Geri dön</a></p>';
+            }
+        }
+        
+        loadArticle();
+    }
 
 });
