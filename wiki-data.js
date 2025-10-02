@@ -1,49 +1,56 @@
-// Wiki makaleleri için ana veri kaynağı
-const WIKI_ARTICLES = [
+const wikiArticles = [
     {
-        id: 'wikiye-merhaba',
-        title: "Wiki'ye Merhaba 👋",
-        author: 'SilaFriztche', 
-        role: 'Yönetici',
-        date: '19 Eylül 2025 21:56',
-        category: 'Duyurular',
-        content: "<p>TA Studios'a ait olan wiki / blog yazısı hoş geldin bölümü!</p>",
+        id: 1,
+        slug: "wiki-ye-merhaba",
+        title: "Wiki'ye Merhaba",
+        summary: "TA Studios'a ait olan wiki / blog yazısı hoş geldin bölümü!",
+        author: "spaceleafs",
+        authorRole: "Yönetici",
+        date: "19 Eylül 2025 21:56",
+        category: "Duyurular",
         isEdited: true,
-        isPinned: true
+        isPinned: true // SABİTLENMİŞ: Bu makale en başta listelenecek.
     },
     {
-        id: 'jandarma-liderleri',
+        id: 2,
+        slug: "jandarma-liderleri",
         title: "TA | Jandarma Liderleri",
-        author: 'sbegarry',
-        role: 'Medya Ekibi',
-        date: '22 Eylül 2025 04:58',
-        category: 'Wiki',
-        content: `
-            <p>TA içerisinde tarih boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.</p>
-            <ul>
-                <li>Enesleben</li>
-                <li>cembatu12</li>
-                <li>Gokbey39</li>
-                <li>IDwright</li>
-                <li>Realhakant256</li>
-                <li>2prododo</li>
-                <li>RonFritzche</li>
-                <li>YusufW1881</li>
-            </ul>
-        `,
+        summary: "TA içerisinde tarihler boyunca Jandarma Liderliği yapmış kişilerin bulunduğu bölüm.",
+        author: "sbagarry",
+        authorRole: "Medya Ekibi",
+        date: "22 Eylül 2025 04:58",
+        category: "Wiki",
         isEdited: true,
+        editedBy: "sbagarry",
+        editorRole: "Medya Ekibi",
+        editedDate: "26 Eylül 2025 02:51",
         isPinned: false
     },
     {
-        id: 'deniz-kuvvetleri-liderleri',
+        id: 3,
+        slug: "deniz-kuvvetleri-liderleri",
         title: "TA | Deniz Kuvvetleri Liderleri",
-        author: 'sbegarry',
-        role: 'Medya Ekibi',
-        date: '22 Eylül 2025 04:52',
-        category: 'Wiki',
-        content: "<p>TA içerisinde tarih boyunca Deniz Kuvvetleri Liderliği yapmış kişilerin bulunduğu bölüm.</p>",
-        isEdited: true,
+        summary: "TA içerisinde tarihler boyunca Deniz Kuvvetleri Liderliği yapmış kişilerin bulunduğu bölüm.",
+        author: "sbagarry",
+        authorRole: "Medya Ekibi",
+        date: "22 Eylül 2025 04:52",
+        category: "Wiki",
+        isEdited: false,
         isPinned: false
     }
-    // Buraya yeni makaleleri ekleyebilirsiniz
+    // YENİ MAKALELERİNİZİ BURAYA EKLEYİN.
+    /*
+    {
+        id: 4, 
+        slug: "yeni-makale-adi", 
+        title: "Yeni Harika Makalemizin Başlığı",
+        summary: "Makalenin kısa ve dikkat çekici özeti.",
+        author: "samet", 
+        authorRole: "Founder", 
+        date: "2 Ekim 2025 19:00", 
+        category: "Rehber", 
+        isEdited: false, 
+        isPinned: true // En üste sabitlemek isterseniz 'true' yapın!
+    }
+    */
 ];
