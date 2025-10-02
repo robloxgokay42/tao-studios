@@ -19,8 +19,9 @@ const wikiArticles = [
             <p>Amacımız, oyuncu topluluğumuzun merak ettiği her şeyi şeffaf bir şekilde sunmaktır. Burada sadece resmi duyurular değil, aynı zamanda uzun soluklu oyunlarımızın tarihçesi ve lider kadromuz hakkındaki bilgileri de bulacaksınız.</p>
             <ul>
                 <li><strong>Duyurular:</strong> Yeni oyunlar, güncellemeler ve etkinlikler.</li>
-                <li><strong>Rehberler:</strong> Oynanış, harita ipuçları ve taktikler.</li>
-                <li><strong>Tarihçe:</strong> Oyun içi liderlerin ve grupların geçmişi.</li>
+                <li><strong>31_Berkc</strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
+                <li><strong>tasm483</strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
+
             </ul>
             
             <p>Keyifli okumalar dileriz!</p>
@@ -72,7 +73,7 @@ const wikiArticles = [
         isEdited: false,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
-        editedDate: "2 Ekim 2025 21.18",
+        editedDate: "2 Ekim 2025 21.24",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
