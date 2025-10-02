@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- GENEL YARDIMCI FONKSİYONLAR ---
-    // URL parametresini alma
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
 
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Kategori filtrelerini doldur
         function populateCategories() {
-            // WIKI_ARTICLES, wiki-data.js'den gelir (Global değişken)
+            // WIKI_ARTICLES, wiki-data.js'den gelir
             const categories = [...new Set(WIKI_ARTICLES.map(article => article.category))];
             categories.forEach(category => {
                 const option = document.createElement('option');
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Makale kartını oluşturma fonksiyonu
         function createArticleCard(article) {
             const card = document.createElement('a');
-            // article.html sayfasına ID parametresiyle yönlendirir
             card.href = `article.html?id=${article.id}`; 
             card.className = 'wiki-card';
 
@@ -42,10 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 badgesHTML += `<span class="wiki-badge badge-pinned">Sabit</span>`;
             }
 
-            // İlk 150 karakteri özet olarak al
             const summaryText = article.content.replace(/<[^>]*>/g, '').substring(0, 150).trim() + '...';
-
-            // Rol bazlı sınıflandırma için
             const roleClass = article.role === 'Medya Ekibi' ? 'medya' : '';
 
             card.innerHTML = `
@@ -80,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (filteredArticles.length === 0) {
                 container.innerHTML = '<p style="padding: 2rem; text-align: center;">Aradığınız kriterlere uygun makale bulunamadı.</p>';
             } else {
-                // Sabitlenmiş makaleleri en üste koy
                 filteredArticles.sort((a, b) => (b.isPinned - a.isPinned));
                 
                 filteredArticles.forEach(article => {
@@ -117,10 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('article-title').textContent = article.title;
                 document.getElementById('article-main-title').textContent = article.title;
                 
-                // Rol sınıfı belirleme
                 const roleClass = article.role === 'Medya Ekibi' ? 'medya' : '';
 
-                // Yazar ve Düzenleme Meta Bilgisi (Görseldeki formatı taklit eder)
+                // Yazar ve Düzenleme Meta Bilgisi
                 let metaHTML = `
                     <span class="author-info">
                         ${article.author} <span class="wiki-badge role-badge ${roleClass}">${article.role}</span>
@@ -130,16 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </span>
                 `;
 
-                // Eğer düzenlendiyse, düzenlenme bilgisini ekle
                 if (article.isEdited) {
+                    // Düzenlendi bilgisi (Önceki görseldeki formatı koruyoruz)
                     metaHTML += `
-                    <span class="editor-info">
+                    <span class="editor-info" style="margin-left: 1.5rem;">
                         • Düzenlendi: ${article.author} <span class="wiki-badge role-badge ${roleClass}">${article.role}</span> — 26 Eylül 2025 02:51
                     </span>
-                    `; // Düzenleyen tarihini sabit tuttuk, isterseniz veri yapısına ekleyebiliriz
+                    `; 
                 }
 
-                document.getElementById('article-author-meta').innerHTML = metaHTML;
+                document.querySelector('.meta-bar').innerHTML = metaHTML; 
                 document.getElementById('article-content').innerHTML = article.content;
 
             } else {
