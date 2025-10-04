@@ -13,6 +13,11 @@
     --spacing-md: 1.5rem;
 }
 
+/* Scroll-behavior'ı hem html hem de body'ye uygulayarak daha iyi uyumluluk */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -24,8 +29,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
-    /* YUMUŞAK KAYDIRMA ÖZELLİĞİ */
-    scroll-behavior: smooth;
+    /* scroll-behavior body'den kaldırıldı, artık html'de yönetilecek */
 }
 
 a {
@@ -410,8 +414,6 @@ a {
     z-index: 5;
     text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
-
-/* BİLETLER BÖLÜMÜ (Kaldırıldı) */
 
 
 /*
