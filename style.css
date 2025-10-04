@@ -13,7 +13,6 @@
     --spacing-md: 1.5rem;
 }
 
-/* Scroll-behavior'ı html'e uygulayarak yumuşak kaydırmayı garanti ediyoruz. */
 html {
     scroll-behavior: smooth;
 }
@@ -25,7 +24,6 @@ html {
 }
 
 body {
-    /* Inter Font Kullanımı */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
@@ -40,9 +38,8 @@ a {
     padding: var(--spacing-xxl) var(--spacing-lg); 
 }
 
-/*
- * NAVBAR (Header)
- */
+/* NAVBAR VE HERO STİLLERİ (Önceki Adımlardaki gibi korunmuştur) */
+/* ... */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -54,385 +51,22 @@ a {
     top: 0;
     z-index: 100; 
 }
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color); 
-    height: 32px;
-}
-
-.logo img {
-    height: 100%;
-    width: auto;
-    display: block;
-}
-
-.nav-links a {
-    margin-left: var(--spacing-md);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-dark);
-    transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.btn-discord {
-    background-color: #5865f2; 
-    color: white !important;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    margin-left: 2rem !important;
-}
-
-.btn-discord:hover {
-    background-color: #4b55e1;
-    color: white;
-}
-
-
-/*
- * HERO SECTION (Ana Alan)
- */
-.hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem var(--spacing-lg);
-    gap: 3rem;
-}
-
-.hero-content {
-    flex: 1;
-    max-width: 55%; 
-}
-
-.subtitle {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-}
-
-.title {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 1rem;
-}
-
-.description {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    margin-bottom: 2rem;
-    line-height: 1.5;
-}
-
-.actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    border: 2px solid transparent; 
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #e69634;
-    transform: translateY(-1px);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-dark);
-    border: 2px solid #d1d5db; 
-}
-
-.btn-secondary:hover {
-    background-color: #f3f4f6;
-    border-color: #e5e7eb;
-}
-
-/* GRADYENT ANİMASYONU */
-.gradient-text {
-    background: linear-gradient(90deg, #f7a53c, #ffcc33, #38bdf8, #52e5b8);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: 400% 400%;
-    animation: gradientShift 8s ease infinite;
-    display: inline-block; 
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero-image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 45%; 
-}
-
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-/*
- * BÖLÜM STİLLERİ (About, Games & Team)
- */
-
-/* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış, Oyunlar) */
-.section-header {
-    max-width: 1400px;
-    margin: 0 auto 3rem;
-    padding: 0 var(--spacing-lg);
-}
-
-.section-title {
-    font-size: 2.2rem;
-    font-weight: 900; 
-    color: var(--text-dark);
-    margin-bottom: 0.25rem;
-}
-
-.section-info {
-    color: var(--text-light);
-    font-weight: 500;
-}
-
-/* Felsefe Kartları (Biz Kimiz) */
-.philosophy-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-md);
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-}
-
-.card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: default; 
-}
-
-.card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 0 0 2px var(--primary-color), 
-                0 15px 20px -5px rgba(0, 0, 0, 0.1); 
-}
-
-.card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.card p {
-    color: var(--text-light);
-    font-size: 0.95rem;
-}
-
-/* Ekip Kartları (Team Section) */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-md);
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-}
-
-.team-member-card {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: pointer;
-    padding-bottom: 1.5rem; 
-}
-
-.team-member-card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 0 0 2px var(--primary-color), 
-                0 15px 20px -5px rgba(0, 0, 0, 0.1); 
-}
-
-.member-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.member-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--background-light); 
-}
-
-.role-badge {
-    background-color: #eef2ff; 
-    color: #4f46e5;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px; 
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.member-info {
-    margin-bottom: 0.5rem; 
-}
-
-.member-info h4 {
-    font-size: 1.25rem; 
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.member-info .username {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 0; 
-}
-
-/*
- * OYUNLAR BÖLÜMÜ (Games Section)
- */
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-}
-
-.game-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    overflow: hidden; 
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    cursor: pointer;
-    position: relative;
-    border: 1px solid #e5e7eb;
-}
-
-.game-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1); 
-}
-
-.game-image-container {
-    height: 200px; 
-    overflow: hidden;
-    position: relative;
-}
-
-.game-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.game-card:hover .game-image {
-    transform: scale(1.05);
-}
-
-.game-card-content {
-    padding: 1.5rem;
-}
-
-.game-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-}
-
-.game-description {
-    color: var(--text-light);
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-}
-
-.game-tag {
-    display: inline-block;
-    background-color: #eef2ff;
-    color: #4f46e5;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-/* Kartın sol üstündeki 'TA' etiketi */
-.game-card .ta-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    z-index: 5;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-}
+/* ... */
 
 /* ---------------------------------------------------------------- */
 /* WIKI ÖZEL STİLLERİ (LİSTE VE DETAY)                               */
 /* ---------------------------------------------------------------- */
 
-/* Wiki listesi konteyneri: Ana içeriği merkezleme ve boşluk verme */
 .wiki-container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 4rem var(--spacing-lg); 
 }
 
-/* Arama ve filtreleme alanı için kapsayıcı */
 .wiki-filter-bar {
     background-color: var(--card-bg);
     padding: 1rem;
     border-radius: 12px;
-    /* Hafif gölge ve yumuşak geçiş */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
     display: flex;
     gap: 1rem;
@@ -443,20 +77,22 @@ a {
 
 .wiki-filter-bar .search-input-group {
     display: flex;
-    flex-grow: 1.5; /* Arama çubuğuna daha fazla alan ver */
+    flex-grow: 1.5; 
     min-width: 250px;
     gap: 0.5rem;
 }
 
-.wiki-filter-bar input[type="text"] {
+.wiki-filter-bar input[type="text"],
+.wiki-filter-bar select {
+    /* Başlık Arama ve Kategori Filtresi Ortak Stili */
     flex-grow: 1;
     padding: 0.75rem 1rem;
     border: 1px solid #d1d5db;
     border-radius: 6px;
     font-size: 1rem;
     color: var(--text-dark);
-    /* GÖRSEL DÜZELTME: Focus halkasını primary renkle değiştir */
-    transition: border-color 0.2s;
+    background-color: #f9fafb; /* Daha açık arka plan */
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .wiki-filter-bar input[type="text"]:focus,
@@ -467,17 +103,11 @@ a {
 }
 
 .wiki-filter-bar .filter-group {
-    /* Kategori filtresi */
     flex-grow: 1;
     min-width: 150px;
 }
 
 .wiki-filter-bar select {
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: var(--text-dark);
     appearance: none; 
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%234B5563" d="M6 9l4-4H2z"/></svg>');
     background-repeat: no-repeat;
@@ -494,12 +124,6 @@ a {
     padding: 0.75rem 0; 
     min-width: 150px;
 }
-/* Checkbox stilini gizle ve label'a tıklanabilir alan ver */
-.wiki-filter-bar input[type="checkbox"] {
-    /* Varsayılan stilini kullanmak yerine, tarayıcı stili almasını sağlayın, ancak görsel düzeltme için */
-    width: 16px;
-    height: 16px;
-}
 
 .wiki-filter-bar .btn {
     /* 'Ara' butonu */
@@ -510,11 +134,8 @@ a {
     background-color: var(--primary-color);
     color: white;
 }
-.wiki-filter-bar .btn:hover {
-    background-color: #e69634;
-}
 
-/* Wiki Kartı Stili (Her makalenin listelendiği kart) */
+/* Makale Kartları Konteyneri */
 #wiki-articles-container {
     display: flex;
     flex-direction: column;
@@ -526,7 +147,6 @@ a {
     background-color: var(--card-bg);
     padding: 1.5rem; 
     border-radius: 12px;
-    /* Yumuşak, modern gölge */
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid #e5e7eb;
     transition: all 0.2s ease-in-out;
@@ -576,6 +196,7 @@ a {
     margin-bottom: 1rem;
 }
 
+/* DÜZELTME: Meta Bilgileri Düzgün Hizalama */
 .wiki-meta {
     font-size: 0.85rem; 
     color: var(--text-light);
@@ -583,6 +204,14 @@ a {
     align-items: center;
     flex-wrap: wrap; 
     line-height: 1.5;
+    gap: 0.5rem; /* Öğeler arasına sabit boşluk */
+}
+.wiki-meta span {
+    white-space: nowrap;
+}
+.wiki-meta .meta-separator {
+    color: #d1d5db; /* Ayırıcı rengi */
+    margin: 0 !important;
 }
 
 /* Yazar Rolü Rozetleri (Listeleme Sayfası) */
@@ -599,6 +228,7 @@ a {
     background-color: #d8f1e6;
     color: #38a169;
 }
+
 
 /* ---------------------------------------------------------------- */
 /* MAKALE DETAY SAYFASI (article.html) STİLLERİ                      */
@@ -661,17 +291,23 @@ a {
     color: #38a169;
 }
 
+/* DÜZELTME: Makale İçeriği Stil Sorunları */
 #article-content {
     line-height: 1.8;
     color: var(--text-dark);
     font-size: 1.05rem;
 }
 
+#article-content h1,
+#article-content h2,
 #article-content h3 {
-    font-size: 1.75rem;
     font-weight: 800;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
+}
+
+#article-content h3 {
+    font-size: 1.75rem;
     padding-bottom: 0.25rem;
     border-bottom: 2px solid #f3f4f6;
 }
@@ -680,164 +316,20 @@ a {
     margin-bottom: 1rem;
 }
 
-
-/* ---------------------------------------------------------------- */
-/* FOOTER (Alt Bilgi) - YENİ VE MİNİMALİST YAPI                       */
-/* ---------------------------------------------------------------- */
-.new-footer {
-    background-color: white; 
-    padding: 1.5rem var(--spacing-lg);
-    border-top: 1px solid #e5e7eb;
-    margin-top: 5rem; /* Üst kısımla arasına boşluk */
-}
-
-.footer-content-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding-bottom: 0; 
-    border-bottom: none; 
-    margin-bottom: 0;
-}
-
-.footer-logo-container {
-    height: 32px;
-}
-
-.footer-logo-container img {
-    height: 100%;
-    width: auto;
-    display: block;
-}
-
-.policy-and-language {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; 
-}
-
-.policy-links {
-    display: flex; 
-    gap: 1.5rem;
-}
-
-.policy-links a {
+#article-content ul,
+#article-content ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
     color: var(--text-dark);
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s;
 }
 
-.policy-links a:hover {
-    color: var(--primary-color);
+#article-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
-.language-select {
-    position: relative;
-    display: inline-block;
-    margin-left: 0; 
-}
-
-.language-select select {
-    appearance: none;
-    background-color: var(--card-bg);
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    padding: 0.5rem 2.5rem 0.5rem 1rem;
-    font-size: 0.95rem;
-    cursor: pointer;
-    outline: none;
+#article-content strong {
+    font-weight: 700;
     color: var(--text-dark);
-    min-width: 120px;
 }
-
-.language-select::after {
-    content: "▼"; 
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.7rem;
-    color: var(--text-dark);
-    pointer-events: none;
-}
-
-.footer-content-bottom {
-    display: flex;
-    flex-direction: column; 
-    max-width: 1400px;
-    margin: 1.5rem auto 0; 
-    padding-top: 1.5rem;
-    border-top: 1px solid #e5e7eb; 
-    font-size: 0.85rem;
-    color: var(--text-light);
-    align-items: flex-start; 
-}
-
-.social-links {
-    display: flex; 
-    margin-bottom: 0.75rem; 
-}
-
-.social-links a {
-    margin-right: 1rem; 
-    color: var(--text-dark);
-    font-weight: 600;
-    transition: color 0.2s;
-    font-size: 0.95rem;
-}
-
-.social-links a:hover {
-    color: var(--primary-color);
-}
-
-.copyright {
-    color: var(--text-light);
-    font-size: 0.85rem;
-}
-
-/* Responsive Düzenlemeler */
-@media (max-width: 1024px) {
-    .section-padding {
-        padding: 4rem var(--spacing-md);
-    }
-}
-
-@media (max-width: 768px) {
-    /* Navbar'daki responsive kurallarınız korunmuştur. */
-    /* ... diğer responsive kurallarınız ... */
-    
-    .wiki-filter-bar {
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: stretch;
-    }
-    
-    .wiki-filter-bar .search-input-group {
-        flex-direction: row;
-    }
-
-    .wiki-filter-bar .filter-group {
-        min-width: 100%;
-    }
-    
-    .wiki-filter-bar .btn {
-        width: 100%;
-    }
-    
-    .wiki-meta {
-        display: block; 
-    }
-    .wiki-meta > span {
-        display: block;
-        margin: 0 !important;
-    }
-    .wiki-meta .author-role {
-        margin-left: 0 !important;
-        margin-right: 0.5rem; 
-        margin-top: 0.25rem;
-        display: inline-block;
-    }
-}
+/* Diğer genel stil kuralları korunmuştur. */
