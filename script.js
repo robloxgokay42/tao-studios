@@ -1,30 +1,72 @@
-// wiki-data.js dosyasından gelen wikiArticles dizisine erişir.
+// This script assumes that 'wikiArticles' array is defined in 'wiki-data.js'
+// and is available globally.
 
 document.addEventListener('DOMContentLoaded', () => {
-    // URL'deki 'slug' parametresini kontrol et (article.html için)
+    // Check for the 'slug' parameter in the URL (for article.html)
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
 
     if (slug) {
-        // Eğer slug varsa, makale detay sayfasındayız
+        // If slug exists, we are on the article detail page
         renderArticle(slug);
     } else if (document.getElementById('wiki-articles-container')) {
-        // Eğer makale konteyneri varsa, wiki listesindeyiz
+        // If the article container exists, we are on the wiki list page
         initializeWikiList();
+    }
+    
+    // Check if the language switcher exists (from index.html/new-footer)
+    const languageSwitcher = document.getElementById('language-switcher');
+    if (languageSwitcher) {
+        setupLanguageSwitcher(languageSwitcher);
     }
 });
 
+
+// -------------------------------------------------------------
+// LANGUAGE SWITCHER SETUP (Used for mock-up functionality)
+// -------------------------------------------------------------
+function setupLanguageSwitcher(switcher) {
+    switcher.addEventListener('change', (event) => {
+        const selectedLang = event.target.value;
+        
+        if (selectedLang === 'tr') {
+            alert("Switching to Turkish version. (Requires separate translation files/logic.)");
+            // window.location.href = 'index-tr.html'; // Example of real implementation
+        } else if (selectedLang === 'en') {
+            // Already English
+        }
+    });
+
+    // Set initial state based on the current page's lang attribute
+    const currentLang = document.documentElement.lang || 'en';
+    if (switcher.querySelector(`option[value="${currentLang}"]`)) {
+        switcher.value = currentLang;
+    }
+}
+
+
+// -------------------------------------------------------------
+// WIKI LIST INITIALIZATION
+// -------------------------------------------------------------
 function initializeWikiList() {
-    // 1. Makaleleri Sırala (Pinned olanlar en başta, sonra tarihe göre)
+    // Ensure wikiArticles is available before proceeding
+    if (typeof wikiArticles === 'undefined') {
+        console.error("Error: wikiArticles array not found. Ensure wiki-data.js is loaded.");
+        document.getElementById('wiki-articles-container').innerHTML = 
+            '<p style="text-align: center; color: var(--text-light);">Wiki data failed to load.</p>';
+        return;
+    }
+
+    // 1. Sort Articles (Pinned first, then by date)
     const sortedArticles = sortArticles(wikiArticles);
     
-    // 2. Kategori Filtresini Doldur
+    // 2. Populate Category Filter
     populateCategoryFilter(wikiArticles);
 
-    // 3. Makaleleri Başlangıçta Göster
+    // 3. Render Articles Initially
     renderArticleList(sortedArticles);
 
-    // 4. Arama ve Filtreleme Olaylarını Bağla
+    // 4. Attach Search and Filter Events
     const searchButton = document.querySelector('.btn-search');
     searchButton.addEventListener('click', applyFilters);
 
@@ -43,21 +85,21 @@ function initializeWikiList() {
 }
 
 // -------------------------------------------------------------
-// SIRALAMA FONKSİYONU: Pinned'ı en üste, kalanı yeni tarihe göre sıralar.
+// SORTING FUNCTION: Pinned to top, rest by newest date.
 // -------------------------------------------------------------
 function sortArticles(articles) {
-    const articlesCopy = [...articles]; // Orijinal diziyi değiştirmemek için kopya oluştur
+    const articlesCopy = [...articles]; 
 
     articlesCopy.sort((a, b) => {
-        // Pinned (Sabitlenmiş) önceliği
-        if (a.isPinned && !b.isPinned) return -1; // a önde (daha yüksek öncelik)
-        if (!a.isPinned && b.isPinned) return 1;  // b önde
+        // Pinned priority
+        if (a.isPinned && !b.isPinned) return -1; 
+        if (!a.isPinned && b.isPinned) return 1;  
 
-        // Pinned aynıysa, tarihe göre sırala (En yeni en başta)
+        // If Pinned status is the same, sort by date (Newest first)
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);
         
-        // Yeni tarihin eskisinden önce gelmesini sağlamak için tersten sıralama yapılır
+        // Return difference for descending order (Newest - Oldest)
         return dateB - dateA;
     });
 
@@ -68,7 +110,13 @@ function sortArticles(articles) {
 
 function populateCategoryFilter(articles) {
     const filter = document.getElementById('categoryFilter');
-    // Tekrarlanan kategorileri engellemek için Set kullan
+    // Add "All" option as the default
+    const allOption = document.createElement('option');
+    allOption.value = 'All';
+    allOption.textContent = 'All Categories';
+    filter.appendChild(allOption);
+
+    // Use a Set to prevent duplicate categories
     const categories = new Set();
     articles.forEach(article => categories.add(article.category));
     
@@ -86,19 +134,19 @@ function applyFilters() {
     const pinnedFilterChecked = document.getElementById('pinnedFilter').checked;
 
     let filteredArticles = wikiArticles.filter(article => {
-        // Başlıkta arama
+        // Search by title
         const matchesSearch = article.title.toLowerCase().includes(searchTerm);
         
-        // Kategoriye göre filtreleme
-        const matchesCategory = categoryFilter === 'Tümü' || article.category === categoryFilter;
+        // Filter by category
+        const matchesCategory = categoryFilter === 'All' || article.category === categoryFilter;
         
-        // Sabitlenmiş filtreleme (eğer işaretliyse sadece pinned olanları göster)
+        // Filter by Pinned status (only show pinned if checkbox is checked)
         const matchesPinned = !pinnedFilterChecked || article.isPinned;
 
         return matchesSearch && matchesCategory && matchesPinned;
     });
     
-    // Filtrelenmiş listeyi tekrar sırala (Pinned yine en üste çıksın)
+    // Re-sort the filtered list (to keep Pinned articles at the top)
     const sortedFilteredArticles = sortArticles(filteredArticles);
 
     renderArticleList(sortedFilteredArticles);
@@ -107,30 +155,30 @@ function applyFilters() {
 
 function renderArticleList(articles) {
     const container = document.getElementById('wiki-articles-container');
-    container.innerHTML = ''; // Önceki içeriği temizle
+    container.innerHTML = ''; // Clear previous content
 
     if (articles.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-light);">Aradığınız kriterlere uygun makale bulunamadı.</p>';
+        container.innerHTML = '<p style="text-align: center; color: var(--text-light);">No articles found matching your criteria.</p>';
         return;
     }
 
     articles.forEach(article => {
         const articleCard = document.createElement('a');
-        articleCard.href = `article.html?slug=${article.slug}`; // Makaleye yönlendirme
+        articleCard.href = `article.html?slug=${article.slug}`; 
         articleCard.classList.add('wiki-card');
 
-        // Rozetleri hazırla
+        // Prepare badges
         let badgesHtml = '';
         if (article.isEdited) {
-            badgesHtml += '<span class="wiki-badge badge-edited">Düzenlendi</span>';
+            badgesHtml += '<span class="wiki-badge badge-edited">Edited</span>';
         }
         if (article.isPinned) {
-            badgesHtml += '<span class="wiki-badge badge-pinned">Sabit</span>';
+            badgesHtml += '<span class="wiki-badge badge-pinned">Pinned</span>';
         }
 
-        // Yazar rol rozetini hazırla
-        const roleClass = article.authorRole.toLowerCase().includes('medya') ? 'medya' : '';
-        const authorRoleHtml = `<span class="author-role ${roleClass}">${article.authorRole}</span>`;
+        // Prepare author role badge
+        const roleClass = article.authorRole && article.authorRole.toLowerCase().includes('media') ? 'medya' : '';
+        const authorRoleHtml = article.authorRole ? `<span class="author-role ${roleClass}">${article.authorRole}</span>` : '';
 
 
         articleCard.innerHTML = `
@@ -138,7 +186,7 @@ function renderArticleList(articles) {
             <div class="wiki-badges">${badgesHtml}</div>
             <p class="wiki-summary">${article.summary}</p>
             <div class="wiki-meta">
-                ${article.authorRole ? authorRoleHtml : ''}
+                ${authorRoleHtml}
                 <span>${article.author}</span>
                 <span style="margin: 0 0.5rem;">—</span>
                 <span>${article.date}</span>
@@ -150,40 +198,43 @@ function renderArticleList(articles) {
     });
 }
 
+// -------------------------------------------------------------
+// ARTICLE DETAIL PAGE RENDERING
+// -------------------------------------------------------------
 function renderArticle(slug) {
     const article = wikiArticles.find(a => a.slug === slug);
-    const container = document.getElementById('article-container');
     
-    // Eğer makale bulunamazsa
+    // If article is not found
     if (!article) {
-        document.getElementById('article-title').textContent = "Makale Bulunamadı";
-        document.getElementById('article-main-title').textContent = "Makale Bulunamadı";
+        document.title = "Article Not Found";
+        document.getElementById('article-main-title').textContent = "Article Not Found";
         document.getElementById('article-content').innerHTML = `
             <div style="text-align: center; padding: 4rem 0;">
-                <p>Aradığınız makale bulunamadı veya silinmiş.</p>
+                <p>The article you are looking for could not be found or has been deleted.</p>
             </div>
         `;
         return;
     }
 
-    // Başlık ve Meta bilgileri
-    document.getElementById('article-title').textContent = article.title;
+    // Set Title and Meta info
+    document.title = `${article.title} - TAO Wiki`;
     document.getElementById('article-main-title').textContent = article.title;
 
-    // Yazar rolü
+    // Author role
     const roleClass = article.authorRole.toLowerCase().includes('medya') ? 'medya' : '';
     const authorRoleHtml = article.authorRole ? `<span class="role-badge ${roleClass}">${article.authorRole}</span>` : '';
 
-    // Düzenlenme tarihi
+    // Edited info
+    const editorRoleClass = article.editorRole && article.editorRole.toLowerCase().includes('medya') ? 'medya' : '';
     const editedByHtml = article.editedBy ? `
         <span style="margin-left: 1.5rem;">
-            • Düzenleyen: ${article.editedBy}
-            <span class="role-badge ${article.editorRole.toLowerCase().includes('medya') ? 'medya' : ''}">${article.editorRole}</span>
-            <span style="margin-left: 0.5rem;">${article.editedDate}</span>
+            • Edited by: ${article.editedBy}
+            <span class="role-badge ${editorRoleClass}">${article.editorRole}</span>
+            <span style="margin-left: 0.5rem;">(${article.editedDate})</span>
         </span>
     ` : '';
     
-    // Meta bar içeriği
+    // Meta bar content
     document.querySelector('.meta-bar').innerHTML = `
         <div class="author-info">
             <span>${article.author}</span>
@@ -193,6 +244,6 @@ function renderArticle(slug) {
         ${editedByHtml}
     `;
 
-    // MAKALENİN İÇERİĞİNİ DİNAMİK OLARAK YÜKLE
+    // LOAD ARTICLE CONTENT DYNAMICALLY
     document.getElementById('article-content').innerHTML = article.content;
 }
