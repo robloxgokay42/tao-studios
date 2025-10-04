@@ -322,6 +322,120 @@ a {
     margin-bottom: 0; 
 }
 
+/*
+ * OYUNLAR BÖLÜMÜ (Games Section)
+ */
+.games-grid {
+    display: grid;
+    /* 2 büyük sütun, mobil cihazlarda 1 sütun */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Resmin dışarı taşmasını engeller */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #e5e7eb;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1); 
+}
+
+.game-image-container {
+    height: 200px; /* Sabit yükseklik */
+    overflow: hidden;
+    position: relative;
+}
+
+.game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Resmi keserek doldurur */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover'da resim zoom efekti */
+.game-card:hover .game-image {
+    transform: scale(1.05);
+}
+
+.game-card-content {
+    padding: 1.5rem;
+}
+
+.game-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.game-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.game-tag {
+    display: inline-block;
+    background-color: #eef2ff;
+    color: #4f46e5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Kartın sol üstündeki 'TA' etiketi */
+.game-card .ta-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 5;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+/*
+ * BİLETLER BÖLÜMÜ (Tickets Section)
+ */
+.tickets-section {
+    text-align: center;
+    background-color: #eef2ff; /* Açık mavi/mor arka plan */
+}
+
+.tickets-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tickets-content h2 {
+    color: #4f46e5;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.tickets-content p {
+    font-size: 1.15rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+}
+
 
 /*
  * WIKI/BLOG STİLLERİ (wiki.html ve article.html)
@@ -569,6 +683,77 @@ a {
     color: #e69634;
 }
 
+/*
+ * FOOTER STİLLERİ
+ */
+.footer {
+    background-color: var(--text-dark); /* Koyu Arka Plan */
+    color: white;
+    padding: var(--spacing-xxl) var(--spacing-lg) 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 3rem;
+    flex-wrap: wrap; /* Mobil uyumluluk için */
+}
+
+.footer-column {
+    min-width: 180px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.footer-column h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
 /* Responsive Düzenlemeler */
 @media (max-width: 1024px) {
     .section-padding {
@@ -628,5 +813,19 @@ a {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem 0;
+    }
+    
+    .games-grid {
+        grid-template-columns: 1fr;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .footer-column {
+        min-width: 100%;
     }
 }
