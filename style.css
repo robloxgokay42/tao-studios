@@ -411,30 +411,7 @@ a {
     text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
-/*
- * BİLETLER BÖLÜMÜ (Tickets Section)
- */
-.tickets-section {
-    text-align: center;
-    background-color: #eef2ff; /* Açık mavi/mor arka plan */
-}
-
-.tickets-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.tickets-content h2 {
-    color: #4f46e5;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-}
-
-.tickets-content p {
-    font-size: 1.15rem;
-    color: #4b5563;
-    margin-bottom: 2rem;
-}
+/* BİLETLER BÖLÜMÜ (Kaldırıldı) */
 
 
 /*
