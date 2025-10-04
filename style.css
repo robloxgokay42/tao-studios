@@ -11,6 +11,7 @@
     --spacing-xxl: 6rem;
     --spacing-lg: 3rem;
     --spacing-md: 1.5rem;
+    --spacing-sm: 1rem;
 }
 
 html {
@@ -38,31 +39,106 @@ a {
     padding: var(--spacing-xxl) var(--spacing-lg); 
 }
 
-/* NAVBAR VE HERO STİLLERİ (Önceki Adımlardaki gibi korunmuştur) */
-/* ... */
+/* ---------------------------------------------------------------- */
+/* NAVBAR (Header) Stilleri                                         */
+/* ---------------------------------------------------------------- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem var(--spacing-lg);
-    background-color: white;
+    background-color: var(--card-bg);
     border-bottom: 1px solid #e5e7eb;
     position: sticky; 
     top: 0;
     z-index: 100; 
 }
-/* ... */
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color); 
+    height: 32px;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+}
+
+.nav-links a {
+    margin-left: var(--spacing-md);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.btn-discord {
+    background-color: #5865f2; 
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-left: 2rem !important;
+}
+
+.btn-discord:hover {
+    background-color: #4b55e1;
+}
+
+/* Genel Buton Stilleri */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 2px solid transparent; 
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #e69634;
+    transform: translateY(-1px);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 2px solid #d1d5db; 
+}
 
 /* ---------------------------------------------------------------- */
-/* WIKI ÖZEL STİLLERİ (LİSTE VE DETAY)                               */
+/* WIKI ÖZEL STİLLERİ (LİSTE VE DETAY)                              */
 /* ---------------------------------------------------------------- */
+
+/* Wiki Sayfası Başlığı */
+.wiki-page-header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem var(--spacing-lg) 2rem;
+}
+.wiki-page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-md);
+}
+
 
 .wiki-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 4rem var(--spacing-lg); 
+    padding: 0 var(--spacing-lg) 4rem; 
 }
 
+/* Filtreleme Çubuğu (image_3978a7.png) */
 .wiki-filter-bar {
     background-color: var(--card-bg);
     padding: 1rem;
@@ -78,20 +154,28 @@ a {
 .wiki-filter-bar .search-input-group {
     display: flex;
     flex-grow: 1.5; 
-    min-width: 250px;
-    gap: 0.5rem;
+    min-width: 200px; /* Daha küçük ekranlarda yer açmak için küçültüldü */
+    position: relative;
 }
 
-.wiki-filter-bar input[type="text"],
-.wiki-filter-bar select {
-    /* Başlık Arama ve Kategori Filtresi Ortak Stili */
+.wiki-filter-bar .search-input-group .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+    font-size: 1rem;
+}
+
+.wiki-filter-bar input[type="text"] {
     flex-grow: 1;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
+    padding: 0.75rem 1rem 0.75rem 2.5rem; /* İkon için soldan boşluk */
+    border: 1px solid #e5e7eb;
     border-radius: 6px;
     font-size: 1rem;
     color: var(--text-dark);
-    background-color: #f9fafb; /* Daha açık arka plan */
+    background-color: #f9fafb; 
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -100,24 +184,30 @@ a {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 1px var(--primary-color);
+    background-color: var(--card-bg);
 }
 
 .wiki-filter-bar .filter-group {
     flex-grow: 1;
-    min-width: 150px;
+    min-width: 120px;
 }
 
 .wiki-filter-bar select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text-dark);
     appearance: none; 
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%234B5563" d="M6 9l4-4H2z"/></svg>');
     background-repeat: no-repeat;
     background-position: right 10px center;
     padding-right: 30px; 
     width: 100%;
+    background-color: #f9fafb;
 }
 
 .wiki-filter-bar .checkbox-group {
-    /* Sabitleneleri göster */
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -125,15 +215,24 @@ a {
     min-width: 150px;
 }
 
+/* 'Ara' butonu */
 .wiki-filter-bar .btn {
-    /* 'Ara' butonu */
     flex-shrink: 0;
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
     font-weight: 600;
     background-color: var(--primary-color);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
 }
+.wiki-filter-bar .btn:hover {
+    background-color: #e69634;
+}
+
 
 /* Makale Kartları Konteyneri */
 #wiki-articles-container {
@@ -196,7 +295,7 @@ a {
     margin-bottom: 1rem;
 }
 
-/* DÜZELTME: Meta Bilgileri Düzgün Hizalama */
+/* DÜZELTME: Meta Bilgileri Stili (image_397bac.png'deki gibi) */
 .wiki-meta {
     font-size: 0.85rem; 
     color: var(--text-light);
@@ -204,13 +303,13 @@ a {
     align-items: center;
     flex-wrap: wrap; 
     line-height: 1.5;
-    gap: 0.5rem; /* Öğeler arasına sabit boşluk */
+    gap: 0.5rem; 
 }
 .wiki-meta span {
     white-space: nowrap;
 }
 .wiki-meta .meta-separator {
-    color: #d1d5db; /* Ayırıcı rengi */
+    color: #d1d5db; 
     margin: 0 !important;
 }
 
@@ -231,13 +330,16 @@ a {
 
 
 /* ---------------------------------------------------------------- */
-/* MAKALE DETAY SAYFASI (article.html) STİLLERİ                      */
+/* MAKALE DETAY SAYFASI (article.html) STİLLERİ (image_397f70.png) */
 /* ---------------------------------------------------------------- */
 
 .article-content-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem var(--spacing-lg);
+    background-color: var(--card-bg); /* Makalenin arkaplanını beyaz yap */
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 
 .article-header {
@@ -246,11 +348,11 @@ a {
 }
 
 #article-main-title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Başlık boyutunu biraz küçülttüm */
     font-weight: 900;
     line-height: 1.1;
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .meta-bar {
@@ -263,11 +365,13 @@ a {
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .meta-bar .author-info {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .meta-bar .author-info span:first-child {
@@ -275,13 +379,12 @@ a {
     color: var(--text-dark);
 }
 
-/* Yazar Rolü Rozetleri (Makale Detay Sayfası) */
+/* Yazar/Düzenleyen Rolü Rozetleri (Detay Sayfası) */
 .meta-bar .role-badge {
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
-    margin-left: 0.5rem;
     
     background-color: #eef2ff; 
     color: #4f46e5;
@@ -291,7 +394,19 @@ a {
     color: #38a169;
 }
 
-/* DÜZELTME: Makale İçeriği Stil Sorunları */
+.meta-bar .edit-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+.meta-bar .edit-info .meta-separator {
+    color: #d1d5db; 
+    font-weight: normal;
+}
+
+
+/* Makale İçeriği Stil Sorunları (image_33ec97.png'deki metin düzeni) */
 #article-content {
     line-height: 1.8;
     color: var(--text-dark);
@@ -332,4 +447,68 @@ a {
     font-weight: 700;
     color: var(--text-dark);
 }
-/* Diğer genel stil kuralları korunmuştur. */
+
+.article-content-container .back-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: color 0.2s;
+}
+
+.article-content-container .back-link:hover {
+    color: var(--primary-color);
+}
+/* ... diğer bölümlerin CSS'i (Hero, About, Team, Games) eklenebilir veya korunabilir. */
+
+/* Responsive Düzenlemeler */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem var(--spacing-sm);
+    }
+    .wiki-container {
+        padding: 0 var(--spacing-sm) 4rem;
+    }
+    .wiki-page-header {
+        padding: 4rem var(--spacing-sm) 2rem;
+    }
+    .article-content-container {
+        padding: 2rem var(--spacing-sm);
+    }
+    #article-main-title {
+        font-size: 2rem;
+    }
+    .wiki-filter-bar {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    .wiki-filter-bar .search-input-group {
+        flex-direction: row;
+        min-width: 100%;
+    }
+    .wiki-filter-bar .filter-group {
+        min-width: 100%;
+    }
+    .wiki-filter-bar .btn {
+        width: 100%;
+    }
+    .wiki-meta {
+        /* Küçük ekranlarda meta bilgileri alt alta koy */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .wiki-meta span {
+        display: inline;
+        margin: 0 !important;
+    }
+    .wiki-meta .author-role {
+        margin-left: 0.5rem !important;
+        margin-top: 0;
+    }
+    .wiki-meta .meta-separator {
+        display: none !important;
+    }
+}
