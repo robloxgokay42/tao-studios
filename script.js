@@ -48,28 +48,18 @@ function setupLanguageSwitcher(switcher) {
 
 
 // -------------------------------------------------------------
-// WIKI LİSTE BAŞLATMA
+// WIKI LİSTE BAŞLATMA VE FİLTRELEME
 // -------------------------------------------------------------
 function initializeWikiList() {
-    // Veri kontrolü, DOMContentLoaded içinde yapıldı. Burada sadece devam ediyoruz.
     if (typeof wikiArticles === 'undefined') return; 
 
-    // 1. Makaleleri Sırala
     const sortedArticles = sortArticles(wikiArticles);
-    
-    // 2. Kategori Filtresini Doldur
     populateCategoryFilter(wikiArticles);
-
-    // 3. Makaleleri Başlangıçta Göster
-    // Başlangıçta filtre uygulamadan tüm makaleleri gösteriyoruz.
     renderArticleList(sortedArticles);
 
-    // 4. Arama ve Filtreleme Olaylarını Bağla
-    const searchButton = document.querySelector('.btn-search');
-    // Eğer Arama düğmesi yoksa, 'Ara' düğmesi tıklanır
-    if (!searchButton) { 
-        document.querySelector('.search-input-group .btn').addEventListener('click', applyFilters);
-    } else {
+    // Olay Dinleyicileri
+    const searchButton = document.querySelector('.btn-search') || document.querySelector('.search-input-group .btn');
+    if (searchButton) {
         searchButton.addEventListener('click', applyFilters);
     }
 
@@ -93,12 +83,8 @@ function initializeWikiList() {
     }
 }
 
-// -------------------------------------------------------------
-// SIRALAMA FONKSİYONU
-// -------------------------------------------------------------
 function sortArticles(articles) {
     const articlesCopy = [...articles]; 
-
     articlesCopy.sort((a, b) => {
         if (a.isPinned && !b.isPinned) return -1; 
         if (!a.isPinned && b.isPinned) return 1;  
@@ -108,22 +94,18 @@ function sortArticles(articles) {
         
         return dateB - dateA;
     });
-
     return articlesCopy;
 }
-// -------------------------------------------------------------
-
 
 function populateCategoryFilter(articles) {
     const filter = document.getElementById('categoryFilter');
     if (!filter) return;
     
-    filter.innerHTML = ''; // Temizle
+    filter.innerHTML = ''; 
 
     const allOption = document.createElement('option');
-    // Filtreleme için kullanılacak basit değer 'Tümü' olmalıdır.
     allOption.value = 'Tümü'; 
-    allOption.textContent = 'Tümü (Kategori)'; // HTML'deki görünen metinle eşleşmeli
+    allOption.textContent = 'Tümü (Kategori)'; 
     filter.appendChild(allOption);
 
     const categories = new Set();
@@ -138,7 +120,6 @@ function populateCategoryFilter(articles) {
 }
 
 function applyFilters() {
-    // Input/Select elementlerinin varlığını kontrol et
     const searchInput = document.getElementById('searchInput');
     const categoryFilter = document.getElementById('categoryFilter');
     const pinnedFilter = document.getElementById('pinnedFilter');
@@ -147,25 +128,16 @@ function applyFilters() {
     const categoryFilterValue = categoryFilter ? categoryFilter.value : 'Tümü';
     const pinnedFilterChecked = pinnedFilter ? pinnedFilter.checked : false;
 
-    // Veri yoksa filtreleme yapma
     if (typeof wikiArticles === 'undefined') return;
 
     let filteredArticles = wikiArticles.filter(article => {
-        
-        // Başlıkta arama
         const matchesSearch = article.title.toLowerCase().includes(searchTerm);
-        
-        // Kategoriye göre filtreleme: 'Tümü' değeri ile kontrol et
         const matchesCategory = categoryFilterValue === 'Tümü' || article.category === categoryFilterValue;
-        
-        // Sabitlenmiş filtreleme
         const matchesPinned = !pinnedFilterChecked || article.isPinned;
-
         return matchesSearch && matchesCategory && matchesPinned;
     });
     
     const sortedFilteredArticles = sortArticles(filteredArticles);
-
     renderArticleList(sortedFilteredArticles);
 }
 
@@ -174,7 +146,7 @@ function renderArticleList(articles) {
     const container = document.getElementById('wiki-articles-container');
     if (!container) return; 
     
-    container.innerHTML = ''; // Önceki içeriği temizle
+    container.innerHTML = ''; 
 
     if (articles.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: var(--text-light); padding-top: 2rem;">Aradığınız kriterlere uygun makale bulunamadı.</p>';
@@ -186,22 +158,20 @@ function renderArticleList(articles) {
         articleCard.href = `article.html?slug=${article.slug}`; 
         articleCard.classList.add('wiki-card');
 
-        // Rozetleri hazırla (Türkçe)
+        // Rozetler
         let badgesHtml = '';
         if (article.isEdited) {
-            // image_397bac.png'deki "Düzenlendi" rozeti
             badgesHtml += '<span class="wiki-badge badge-edited">Düzenlendi</span>';
         }
         if (article.isPinned) {
-            // image_397bac.png'deki "Sabit" rozeti
             badgesHtml += '<span class="wiki-badge badge-pinned">Sabit</span>';
         }
 
-        // Yazar rol rozetini hazırla (image_397bac.png'deki gibi)
-        const roleClass = article.authorRole && article.authorRole.toLowerCase().includes('medya') ? 'medya' : '';
+        // Yazar Rolü ve Meta Bilgileri
+        const roleClass = article.authorRole && article.authorRole.toLowerCase().includes('medya') ? 'medya' : 'yonetici';
         const authorRoleHtml = article.authorRole ? `<span class="author-role ${roleClass}">${article.authorRole}</span>` : '';
-
-
+        
+        // DÜZELTME: Meta bilgileri span içine alarak daha okunur hale getiriyoruz.
         articleCard.innerHTML = `
             <h2>${article.title}</h2>
             <div class="wiki-badges">${badgesHtml}</div>
@@ -209,9 +179,9 @@ function renderArticleList(articles) {
             <div class="wiki-meta">
                 <span>${article.author}</span>
                 ${authorRoleHtml}
-                <span style="margin: 0 0.5rem;">—</span>
+                <span class="meta-separator">—</span>
                 <span>${article.date}</span>
-                <span style="margin: 0 0.5rem;">•</span>
+                <span class="meta-separator">•</span>
                 <span>${article.category}</span>
             </div>
         `;
@@ -242,15 +212,15 @@ function renderArticle(slug) {
     document.title = `${article.title} - TAO Wiki`;
     document.getElementById('article-main-title').textContent = article.title;
 
-    // Yazar rolü (image_397f70.png'deki gibi)
-    const roleClass = article.authorRole.toLowerCase().includes('medya') ? 'medya' : 'yonetici'; // Yeni 'yonetici' default class
+    // Yazar rolü
+    const roleClass = article.authorRole.toLowerCase().includes('medya') ? 'medya' : 'yonetici'; 
     const authorRoleHtml = article.authorRole ? `<span class="role-badge ${roleClass}">${article.authorRole}</span>` : '';
 
-    // Düzenlenme bilgisi (image_397f70.png'deki gibi)
-    const editorRoleClass = article.editorRole && article.editorRole.toLowerCase().includes('medya') ? 'medya' : 'yonetici'; // Yeni 'yonetici' default class
+    // Düzenlenme bilgisi
+    const editorRoleClass = article.editorRole && article.editorRole.toLowerCase().includes('medya') ? 'medya' : 'yonetici'; 
     const editedByHtml = article.editedBy ? `
-        <span style="margin-left: 1.5rem;">
-            • Düzenleyen: ${article.editedBy}
+        <span class="edit-info">
+            <span class="meta-separator">•</span> Düzenleyen: ${article.editedBy}
             <span class="role-badge ${editorRoleClass}">${article.editorRole}</span>
             <span style="margin-left: 0.5rem;">${article.editedDate}</span>
         </span>
