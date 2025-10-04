@@ -11,11 +11,6 @@
     --spacing-xxl: 6rem;
     --spacing-lg: 3rem;
     --spacing-md: 1.5rem;
-    --spacing-sm: 1rem;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 * {
@@ -25,9 +20,12 @@ html {
 }
 
 body {
+    /* Inter Font Kullanımı */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
+    /* YUMUŞAK KAYDIRMA ÖZELLİĞİ */
+    scroll-behavior: smooth;
 }
 
 a {
@@ -39,15 +37,15 @@ a {
     padding: var(--spacing-xxl) var(--spacing-lg); 
 }
 
-/* ---------------------------------------------------------------- */
-/* NAVBAR (Header) Stilleri                                         */
-/* ---------------------------------------------------------------- */
+/*
+ * NAVBAR (Header)
+ */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem var(--spacing-lg);
-    background-color: var(--card-bg);
+    background-color: white;
     border-bottom: 1px solid #e5e7eb;
     position: sticky; 
     top: 0;
@@ -58,13 +56,6 @@ a {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color); 
-    height: 32px;
-}
-
-.logo img {
-    height: 100%;
-    width: auto;
-    display: block;
 }
 
 .nav-links a {
@@ -90,9 +81,54 @@ a {
 
 .btn-discord:hover {
     background-color: #4b55e1;
+    color: white;
 }
 
-/* Genel Buton Stilleri */
+
+/*
+ * HERO SECTION (Ana Alan)
+ */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem var(--spacing-lg);
+    gap: 3rem;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 55%; 
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
 .btn {
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
@@ -105,410 +141,668 @@ a {
     background-color: var(--primary-color);
     color: white;
 }
+
 .btn-primary:hover {
     background-color: #e69634;
     transform: translateY(-1px);
 }
+
 .btn-secondary {
     background-color: transparent;
     color: var(--text-dark);
     border: 2px solid #d1d5db; 
 }
 
-/* ---------------------------------------------------------------- */
-/* WIKI ÖZEL STİLLERİ (LİSTE VE DETAY)                              */
-/* ---------------------------------------------------------------- */
+.btn-secondary:hover {
+    background-color: #f3f4f6;
+    border-color: #e5e7eb;
+}
 
-/* Wiki Sayfası Başlığı */
-.wiki-page-header {
-    max-width: 1000px;
+/* GRADYENT ANİMASYONU */
+.gradient-text {
+    background: linear-gradient(90deg, #f7a53c, #ffcc33, #38bdf8, #52e5b8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    display: inline-block; 
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 45%; 
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*
+ * BÖLÜM STİLLERİ (About, Games & Team)
+ */
+
+/* Bölüm Başlıkları (Biz Kimiz, Ekiple Tanış, Oyunlar) */
+.section-header {
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 900; 
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.section-info {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Felsefe Kartları (Biz Kimiz) */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 4rem var(--spacing-lg) 2rem;
-}
-.wiki-page-header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-lg);
 }
 
-
-.wiki-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg) 4rem; 
-}
-
-/* Filtreleme Çubuğu (image_3978a7.png) */
-.wiki-filter-bar {
+.card {
     background-color: var(--card-bg);
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap; 
-    align-items: center; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: default; 
 }
 
-.wiki-filter-bar .search-input-group {
+/* BİZ KİMİZ KART HOVER EFECTİ */
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 0 2px var(--primary-color), 
+                0 15px 20px -5px rgba(0, 0, 0, 0.1); 
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Ekip Kartları (Team Section) */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.team-member-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
     display: flex;
-    flex-grow: 1.5; 
-    min-width: 200px; /* Daha küçük ekranlarda yer açmak için küçültüldü */
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    /* Sosyal medya ikonları kaldırıldığı için kartları biraz daha kompakt yapıyoruz */
+    padding-bottom: 1.5rem; 
+}
+
+/* EKİP KART HOVER ANİMASYONU: Büyüme ve Çerçeve Efekti */
+.team-member-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 0 2px var(--primary-color), 
+                0 15px 20px -5px rgba(0, 0, 0, 0.1); 
+}
+
+.member-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.member-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--background-light); 
+}
+
+.role-badge {
+    background-color: #eef2ff; 
+    color: #4f46e5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px; 
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.member-info {
+    margin-bottom: 0.5rem; 
+}
+
+.member-info h4 {
+    font-size: 1.25rem; 
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.member-info .username {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0; 
+}
+
+/*
+ * OYUNLAR BÖLÜMÜ (Games Section)
+ */
+.games-grid {
+    display: grid;
+    /* 2 büyük sütun, mobil cihazlarda 1 sütun */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Resmin dışarı taşmasını engeller */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #e5e7eb;
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1); 
+}
+
+.game-image-container {
+    height: 200px; /* Sabit yükseklik */
+    overflow: hidden;
     position: relative;
 }
 
-.wiki-filter-bar .search-input-group .search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-light);
-    pointer-events: none;
-    font-size: 1rem;
-}
-
-.wiki-filter-bar input[type="text"] {
-    flex-grow: 1;
-    padding: 0.75rem 1rem 0.75rem 2.5rem; /* İkon için soldan boşluk */
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: var(--text-dark);
-    background-color: #f9fafb; 
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.wiki-filter-bar input[type="text"]:focus,
-.wiki-filter-bar select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 1px var(--primary-color);
-    background-color: var(--card-bg);
-}
-
-.wiki-filter-bar .filter-group {
-    flex-grow: 1;
-    min-width: 120px;
-}
-
-.wiki-filter-bar select {
-    padding: 0.75rem 1rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: var(--text-dark);
-    appearance: none; 
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%234B5563" d="M6 9l4-4H2z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    padding-right: 30px; 
+.game-image {
     width: 100%;
-    background-color: #f9fafb;
+    height: 100%;
+    object-fit: cover; /* Resmi keserek doldurur */
+    display: block;
+    transition: transform 0.3s ease;
 }
 
-.wiki-filter-bar .checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 0; 
-    min-width: 150px;
+/* Hover'da resim zoom efekti */
+.game-card:hover .game-image {
+    transform: scale(1.05);
 }
 
-/* 'Ara' butonu */
-.wiki-filter-bar .btn {
-    flex-shrink: 0;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    background-color: var(--primary-color);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border: none;
-}
-.wiki-filter-bar .btn:hover {
-    background-color: #e69634;
+.game-card-content {
+    padding: 1.5rem;
 }
 
-
-/* Makale Kartları Konteyneri */
-#wiki-articles-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.wiki-card {
-    display: block; 
-    background-color: var(--card-bg);
-    padding: 1.5rem; 
-    border-radius: 12px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
-    transition: all 0.2s ease-in-out;
-}
-
-.wiki-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
-    border-color: var(--primary-color);
-}
-
-.wiki-card h2 {
-    font-size: 1.35rem; 
+.game-title {
+    font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+    margin-bottom: 0.25rem;
 }
 
-.wiki-badges {
-    margin-bottom: 0.75rem;
-    display: flex;
-    gap: 0.5rem;
+.game-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
 }
 
-.wiki-badge {
+.game-tag {
     display: inline-block;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    background-color: #eef2ff;
+    color: #4f46e5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 600;
 }
 
+/* Kartın sol üstündeki 'TA' etiketi */
+.game-card .ta-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 5;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+/* BİLETLER BÖLÜMÜ (Kaldırıldı) */
+
+
+/*
+ * WIKI/BLOG STİLLERİ (wiki.html ve article.html)
+ */
+.wiki-main {
+    background-color: var(--background-light);
+}
+
+.wiki-header-container {
+    max-width: 1400px;
+    margin: 0 auto 2rem;
+    padding: 0 var(--spacing-lg);
+}
+
+.wiki-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+/* Arama ve Filtreleme Çubuğu */
+.search-filter-bar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem var(--spacing-lg);
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.search-input-group, .filter-group, .checkbox-group {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0 1rem;
+    background-color: #f9fafb;
+    flex-grow: 1;
+}
+
+.search-input-group {
+    max-width: 400px;
+}
+
+.search-input-group i {
+    color: var(--text-light);
+    margin-right: 0.5rem;
+}
+
+.search-filter-bar input[type="text"],
+.search-filter-bar select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-dark);
+    height: 100%;
+    width: 100%;
+}
+
+.checkbox-group {
+    background: white;
+    padding: 0 1.5rem;
+    flex-grow: 0;
+}
+
+.checkbox-group label {
+    margin-left: 0.5rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.btn-search {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    height: 48px;
+}
+.btn-search:hover {
+    background-color: #e69634;
+}
+
+/* Wiki Kartları */
+.wiki-articles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.wiki-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.wiki-card:hover {
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.wiki-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.wiki-badges {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.wiki-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
 .badge-edited {
-    background-color: #fef3c7; 
-    color: #b45309;
+    background-color: #fef9c3; 
+    color: #a16207;
 }
 
 .badge-pinned {
-    background-color: #fee2e2; 
-    color: #b91c1c;
+    background-color: #d1fae5; 
+    color: #065f46;
 }
 
 .wiki-summary {
     color: var(--text-light);
-    font-size: 0.9rem; 
-    line-height: 1.5;
     margin-bottom: 1rem;
 }
 
-/* DÜZELTME: Meta Bilgileri Stili (image_397bac.png'deki gibi) */
 .wiki-meta {
-    font-size: 0.85rem; 
+    font-size: 0.85rem;
     color: var(--text-light);
     display: flex;
     align-items: center;
     flex-wrap: wrap; 
-    line-height: 1.5;
-    gap: 0.5rem; 
-}
-.wiki-meta span {
-    white-space: nowrap;
-}
-.wiki-meta .meta-separator {
-    color: #d1d5db; 
-    margin: 0 !important;
 }
 
-/* Yazar Rolü Rozetleri (Listeleme Sayfası) */
 .wiki-meta .author-role {
-    background-color: #eef2ff; 
-    color: #4f46e5;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.7rem; 
-    font-weight: 600;
-    margin-left: 0.5rem; 
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    font-weight: 500;
+    /* Yönetici rolü için renk */
+    background-color: #eff6ff; 
+    color: #1d4ed8;
 }
+
 .wiki-meta .author-role.medya {
-    background-color: #d8f1e6;
-    color: #38a169;
+    /* Medya Ekibi rolü için renk */
+    background-color: #fef2f2;
+    color: #ef4444;
 }
 
-
-/* ---------------------------------------------------------------- */
-/* MAKALE DETAY SAYFASI (article.html) STİLLERİ (image_397f70.png) */
-/* ---------------------------------------------------------------- */
-
-.article-content-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem var(--spacing-lg);
-    background-color: var(--card-bg); /* Makalenin arkaplanını beyaz yap */
-    border-radius: 16px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+/* Tekil Makale Görünümü (article.html) */
+.article-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.article-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-#article-main-title {
-    font-size: 2.5rem; /* Başlık boyutunu biraz küçülttüm */
+.article-header h1 {
+    font-size: 2.5rem;
     font-weight: 900;
-    line-height: 1.1;
-    color: var(--text-dark);
     margin-bottom: 0.5rem;
 }
 
-.meta-bar {
+.article-header .meta-bar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 0.95rem;
     color: var(--text-light);
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.9rem;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+    flex-wrap: wrap; 
+    gap: 0.5rem 1.5rem;
 }
 
 .meta-bar .author-info {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
 }
 
-.meta-bar .author-info span:first-child {
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-/* Yazar/Düzenleyen Rolü Rozetleri (Detay Sayfası) */
 .meta-bar .role-badge {
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
+    margin-left: 0.5rem;
     font-size: 0.8rem;
-    font-weight: 600;
-    
-    background-color: #eef2ff; 
-    color: #4f46e5;
-}
-.meta-bar .role-badge.medya {
-    background-color: #d8f1e6;
-    color: #38a169;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
 }
 
-.meta-bar .edit-info {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-left: 1rem;
-}
-.meta-bar .edit-info .meta-separator {
-    color: #d1d5db; 
-    font-weight: normal;
-}
-
-
-/* Makale İçeriği Stil Sorunları (image_33ec97.png'deki metin düzeni) */
-#article-content {
+.article-content {
     line-height: 1.8;
     color: var(--text-dark);
-    font-size: 1.05rem;
 }
 
-#article-content h1,
-#article-content h2,
-#article-content h3 {
-    font-weight: 800;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+.article-content h2, .article-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
 }
 
-#article-content h3 {
-    font-size: 1.75rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 2px solid #f3f4f6;
-}
-
-#article-content p {
-    margin-bottom: 1rem;
-}
-
-#article-content ul,
-#article-content ol {
+.article-content ul, .article-content ol {
     margin-left: 2rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    list-style-type: disc;
 }
 
-#article-content li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
-
-#article-content strong {
-    font-weight: 700;
-    color: var(--text-dark);
-}
-
-.article-content-container .back-link {
+.article-footer a {
     display: inline-flex;
     align-items: center;
-    margin-top: 3rem;
-    font-size: 1rem;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    color: var(--primary-color);
     font-weight: 600;
-    color: var(--text-dark);
     transition: color 0.2s;
 }
 
-.article-content-container .back-link:hover {
+.article-footer a:hover {
+    color: #e69634;
+}
+
+/*
+ * FOOTER STİLLERİ
+ */
+.footer {
+    background-color: var(--text-dark); /* Koyu Arka Plan */
+    color: white;
+    padding: var(--spacing-xxl) var(--spacing-lg) 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 3rem;
+    flex-wrap: wrap; /* Mobil uyumluluk için */
+}
+
+.footer-column {
+    min-width: 180px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.footer-column p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.footer-column h5 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
     color: var(--primary-color);
 }
-/* ... diğer bölümlerin CSS'i (Hero, About, Team, Games) eklenebilir veya korunabilir. */
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
 
 /* Responsive Düzenlemeler */
+@media (max-width: 1024px) {
+    .section-padding {
+        padding: 4rem var(--spacing-md);
+    }
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem var(--spacing-sm);
-    }
-    .wiki-container {
-        padding: 0 var(--spacing-sm) 4rem;
-    }
-    .wiki-page-header {
-        padding: 4rem var(--spacing-sm) 2rem;
-    }
-    .article-content-container {
-        padding: 2rem var(--spacing-sm);
-    }
-    #article-main-title {
-        font-size: 2rem;
-    }
-    .wiki-filter-bar {
+    .hero-section {
         flex-direction: column;
-        gap: 0.75rem;
+        text-align: center;
+        padding: 3rem var(--spacing-md);
+    }
+    
+    .hero-content, .hero-image-container {
+        max-width: 100%;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .actions {
+        justify-content: center;
+    }
+    
+    .navbar {
+        padding: 1rem var(--spacing-md);
+    }
+    
+    .nav-links {
+        display: none; 
+    }
+
+    .search-filter-bar {
+        flex-direction: column;
+        padding: 1rem;
         align-items: stretch;
     }
-    .wiki-filter-bar .search-input-group {
-        flex-direction: row;
-        min-width: 100%;
-    }
-    .wiki-filter-bar .filter-group {
-        min-width: 100%;
-    }
-    .wiki-filter-bar .btn {
+    
+    .search-input-group, .filter-group, .checkbox-group, .btn-search {
         width: 100%;
+        max-width: none;
+        margin: 0.25rem 0;
     }
-    .wiki-meta {
-        /* Küçük ekranlarda meta bilgileri alt alta koy */
+
+    .wiki-header-container, .wiki-articles-grid, .article-container {
+        padding: 0 var(--spacing-md);
+    }
+
+    .article-container {
+        margin: 2rem auto;
+        padding: 1rem;
+    }
+
+    .article-header .meta-bar {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.5rem 0;
     }
-    .wiki-meta span {
-        display: inline;
-        margin: 0 !important;
+    
+    .games-grid {
+        grid-template-columns: 1fr;
+        padding: 0 var(--spacing-md);
     }
-    .wiki-meta .author-role {
-        margin-left: 0.5rem !important;
-        margin-top: 0;
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
     }
-    .wiki-meta .meta-separator {
-        display: none !important;
+    
+    .footer-column {
+        min-width: 100%;
     }
 }
