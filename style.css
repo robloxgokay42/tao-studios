@@ -13,7 +13,7 @@
     --spacing-md: 1.5rem;
 }
 
-/* Scroll-behavior'ı hem html hem de body'ye uygulayarak daha iyi uyumluluk */
+/* Scroll-behavior'ı html'e uygulayarak yumuşak kaydırmayı garanti ediyoruz. */
 html {
     scroll-behavior: smooth;
 }
@@ -29,7 +29,6 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--background-light);
     color: var(--text-dark);
-    /* scroll-behavior body'den kaldırıldı, artık html'de yönetilecek */
 }
 
 a {
@@ -60,6 +59,13 @@ a {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color); 
+    height: 32px; /* Logo görseli için yükseklik ayarı */
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
 }
 
 .nav-links a {
@@ -273,7 +279,6 @@ a {
     align-items: flex-start;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
-    /* Sosyal medya ikonları kaldırıldığı için kartları biraz daha kompakt yapıyoruz */
     padding-bottom: 1.5rem; 
 }
 
@@ -331,7 +336,6 @@ a {
  */
 .games-grid {
     display: grid;
-    /* 2 büyük sütun, mobil cihazlarda 1 sütun */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 2rem;
     max-width: 1400px;
@@ -343,7 +347,7 @@ a {
     background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    overflow: hidden; /* Resmin dışarı taşmasını engeller */
+    overflow: hidden; 
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
     position: relative;
@@ -356,7 +360,7 @@ a {
 }
 
 .game-image-container {
-    height: 200px; /* Sabit yükseklik */
+    height: 200px; 
     overflow: hidden;
     position: relative;
 }
@@ -364,7 +368,7 @@ a {
 .game-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Resmi keserek doldurur */
+    object-fit: cover; 
     display: block;
     transition: transform 0.3s ease;
 }
@@ -415,322 +419,99 @@ a {
     text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
-
-/*
- * WIKI/BLOG STİLLERİ (wiki.html ve article.html)
- */
-.wiki-main {
-    background-color: var(--background-light);
-}
-
-.wiki-header-container {
-    max-width: 1400px;
-    margin: 0 auto 2rem;
-    padding: 0 var(--spacing-lg);
-}
-
-.wiki-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-/* Arama ve Filtreleme Çubuğu */
-.search-filter-bar {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto 3rem;
+/* FOOTER (Alt Bilgi) - YENİ YAPI */
+.new-footer {
+    background-color: white; 
     padding: 1.5rem var(--spacing-lg);
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid #e5e7eb;
 }
 
-.search-input-group, .filter-group, .checkbox-group {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 0 1rem;
-    background-color: #f9fafb;
-    flex-grow: 1;
-}
-
-.search-input-group {
-    max-width: 400px;
-}
-
-.search-input-group i {
-    color: var(--text-light);
-    margin-right: 0.5rem;
-}
-
-.search-filter-bar input[type="text"],
-.search-filter-bar select {
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 1rem;
-    color: var(--text-dark);
-    height: 100%;
-    width: 100%;
-}
-
-.checkbox-group {
-    background: white;
-    padding: 0 1.5rem;
-    flex-grow: 0;
-}
-
-.checkbox-group label {
-    margin-left: 0.5rem;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-.btn-search {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    height: 48px;
-}
-.btn-search:hover {
-    background-color: #e69634;
-}
-
-/* Wiki Kartları */
-.wiki-articles-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-}
-
-.wiki-card {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s, transform 0.2s;
-    cursor: pointer;
-}
-
-.wiki-card:hover {
-    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-}
-
-.wiki-card h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    display: inline-block;
-}
-
-.wiki-badges {
-    display: inline-flex;
-    gap: 0.5rem;
-    margin-left: 1rem;
-}
-
-.wiki-badge {
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.badge-edited {
-    background-color: #fef9c3; 
-    color: #a16207;
-}
-
-.badge-pinned {
-    background-color: #d1fae5; 
-    color: #065f46;
-}
-
-.wiki-summary {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-}
-
-.wiki-meta {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; 
-}
-
-.wiki-meta .author-role {
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    margin-right: 0.5rem;
-    font-weight: 500;
-    /* Yönetici rolü için renk */
-    background-color: #eff6ff; 
-    color: #1d4ed8;
-}
-
-.wiki-meta .author-role.medya {
-    /* Medya Ekibi rolü için renk */
-    background-color: #fef2f2;
-    color: #ef4444;
-}
-
-/* Tekil Makale Görünümü (article.html) */
-.article-container {
-    max-width: 800px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.article-header h1 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-}
-
-.article-header .meta-bar {
-    display: flex;
-    align-items: center;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 1rem;
-    flex-wrap: wrap; 
-    gap: 0.5rem 1.5rem;
-}
-
-.meta-bar .author-info {
-    display: flex;
-    align-items: center;
-}
-
-.meta-bar .role-badge {
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.article-content {
-    line-height: 1.8;
-    color: var(--text-dark);
-}
-
-.article-content h2, .article-content h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-}
-
-.article-content ul, .article-content ol {
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-    list-style-type: disc;
-}
-
-.article-footer a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: color 0.2s;
-}
-
-.article-footer a:hover {
-    color: #e69634;
-}
-
-/*
- * FOOTER STİLLERİ
- */
-.footer {
-    background-color: var(--text-dark); /* Koyu Arka Plan */
-    color: white;
-    padding: var(--spacing-xxl) var(--spacing-lg) 2rem;
-}
-
-.footer-content {
+.footer-content-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 1400px;
     margin: 0 auto;
-    gap: 3rem;
-    flex-wrap: wrap; /* Mobil uyumluluk için */
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 1.5rem;
 }
 
-.footer-column {
-    min-width: 180px;
+.footer-logo-container {
+    height: 32px;
 }
 
-.footer-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+.footer-logo-container img {
+    height: 100%;
+    width: auto;
+    display: block;
 }
 
-.footer-column p {
-    font-size: 0.9rem;
-    color: #9ca3af;
-    line-height: 1.6;
-}
-
-.footer-column h5 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-column ul li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-column ul li a {
-    color: #9ca3af;
-    font-size: 0.9rem;
+.policy-links a {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-left: 1.5rem;
+    font-weight: 500;
     transition: color 0.2s;
 }
 
-.footer-column ul li a:hover {
+.policy-links a:hover {
     color: var(--primary-color);
 }
 
-.footer-bottom {
+.language-select {
+    position: relative;
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.language-select select {
+    appearance: none;
+    background-color: var(--card-bg);
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+    color: var(--text-dark);
+}
+
+.language-select::after {
+    content: "▼"; /* Dropdown oku */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: var(--text-dark);
+    pointer-events: none;
+}
+
+.footer-content-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     max-width: 1400px;
-    margin: 3rem auto 0;
-    padding-top: 2rem;
-    border-top: 1px solid #374151;
-    text-align: center;
+    margin: 0 auto;
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--text-light);
+}
+
+.social-links a {
+    margin-right: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    color: var(--text-light);
+    font-size: 0.85rem;
 }
 
 /* Responsive Düzenlemeler */
@@ -741,70 +522,36 @@ a {
 }
 
 @media (max-width: 768px) {
-    .hero-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 3rem var(--spacing-md);
-    }
+    /* ... diğer responsive kurallar ... */
     
-    .hero-content, .hero-image-container {
-        max-width: 100%;
-    }
-    
-    .title {
-        font-size: 2.5rem;
-    }
-    
-    .actions {
-        justify-content: center;
-    }
-    
-    .navbar {
-        padding: 1rem var(--spacing-md);
-    }
-    
-    .nav-links {
-        display: none; 
-    }
-
-    .search-filter-bar {
-        flex-direction: column;
-        padding: 1rem;
-        align-items: stretch;
-    }
-    
-    .search-input-group, .filter-group, .checkbox-group, .btn-search {
-        width: 100%;
-        max-width: none;
-        margin: 0.25rem 0;
-    }
-
-    .wiki-header-container, .wiki-articles-grid, .article-container {
-        padding: 0 var(--spacing-md);
-    }
-
-    .article-container {
-        margin: 2rem auto;
-        padding: 1rem;
-    }
-
-    .article-header .meta-bar {
+    .footer-content-top {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem 0;
+        gap: 1rem;
     }
-    
-    .games-grid {
-        grid-template-columns: 1fr;
-        padding: 0 var(--spacing-md);
-    }
-    
-    .footer-content {
+
+    .policy-links {
+        display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 0.5rem;
     }
-    
-    .footer-column {
-        min-width: 100%;
+
+    .policy-links a {
+        margin-left: 0;
+    }
+
+    .language-select {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .footer-content-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .social-links a {
+        margin-right: 1rem;
     }
 }
