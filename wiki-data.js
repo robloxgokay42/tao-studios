@@ -20,7 +20,7 @@ const wikiArticles = [
             <ul>
                 <li><strong>Duyurular:</strong> Yeni oyunlar, güncellemeler ve etkinlikler.</li>
                 <li><strong>Etkinlikler:</strong> Oyun içerisinde yapılan etkinlik ve törenler.</li>
-                <li><strong>Tarihçe:</strong> Stüdyomuzun nasıl gelişip yükseldiği hakkınde bilgilendirmeler.</li>
+                <li><strong>Tarihçe:</strong> Stüdyomuzun nasıl gelişip yükseldiği hakkında bilgilendirmeler.</li>
 
             </ul>
             
