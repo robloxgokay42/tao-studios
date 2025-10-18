@@ -38,7 +38,7 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "2 Ekim 2025 21.18",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
         editedDate: "2 Ekim 2025 21.18",
@@ -55,10 +55,11 @@ const wikiArticles = [
                 <li><strong>sametreyiz_3</strong> - (2022): İlk dönem lideri, Jandarma'yı kurdu.</li>
                 <li><strong>SilaFriztche</strong> - (2024): Geçici Jandarma lideri.</li>
                 <li><strong>mertbaba_450</strong> - (2025): Jandarma'ya yüksek aktiflik kazandırarak rekorlar kırdırmış bir lider.</li>
-                <li><strong>AYAZ_ECERBERFN</strong> - (2025): Jandarma'nın yükselişini sabit tutan bir lider..</li>
+                <li><strong>AYAZ_ECERBERFN</strong> - (2025): Jandarma'nın yükselişini sabit tutan bir lider.</li>
+                <li><strong>YeTeK01</strong> - (2025): Jandarma için çabalamış bir lider.</li>
             </ol>
             
-            <p>Onların çabaları ve liderlikleri sayesinde TAO topluluğu her zaman daha güçlü ve düzenli kalmıştır.</p>
+            <p>Onların çabaları ve liderlikleri sayesinde TAO'nun asayişi ve trafik düzeni her zaman daha güçlü kalmıştır.</p>
         `
     },
     {
@@ -70,10 +71,10 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "3 Ekim 2025 18.42",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
-        editedDate: "3 Ekim 2025 18.41",
+        editedDate: "18 Ekim 2025 20.25",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
@@ -90,6 +91,7 @@ const wikiArticles = [
                 <li><strong>TR_MERHABA31</strong> - (2025): Sınır Müfettişleri'nin aktifliğini ve düzenini korumuş bir lider.</li>
                 <li><strong>MUHAMETMERT23</strong> - (2025): Sınır Müfettişleri için çabalamış bir lider.</li>
                 <li><strong>arda_guler58587</strong> - (2025): Sınır Müfettişleri için çabalamış bir lider.</li>
+                <li><strong>alper23442</strong> - (2025): Sınır Müfettişleri'nin aktifliğini yüksek tutmuştur.</li>
             </ol>
             
             <p>Onların çabaları ve liderlikleri sayesinde TAO sınırı her zaman daha iyileşmiştir.</p>
@@ -136,10 +138,10 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "3 Ekim 2025 18.53",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
-        editedDate: "3 Ekim 2025 18.53",
+        editedDate: "18 Ekim 2025 20.25",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
@@ -155,6 +157,7 @@ const wikiArticles = [
                 <li><strong>sametreyiz_3</strong> - (2025): Kara Kuvvetleri'ni yapılandırdı.</li>
                 <li><strong>vadaaa013</strong> - (2025): Kara Kuvvetleri'nin aktifliğini düzene soktu.</li>
                 <li><strong>Yusuffriztche312</strong> - (2025): Kara Kuvvetleri'nin özelliklerini korudu.</li>
+                <li><strong>SalihFriztche47</strong> - (2025): Kara Kuvvetleri'nin aktifliğini düzene sokup çabalamış bir lider.</li>
             </ul>
             
             <p>Karadaki gücümüz, bu liderler sayesinde güçlenmiştir.</p>
@@ -169,7 +172,7 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "3 Ekim 2025 18.57",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
         editedDate: "3 Ekim 2025 18.57",
@@ -186,9 +189,10 @@ const wikiArticles = [
                 <li><strong>sametreyiz_3</strong> - (2022): İlk lider, Hava Kuvvetleri'ni kurdu.</li>
                 <li><strong>arda5ei</strong> - (2024): Hava Kuvvetleri'ne birçok rekor kırdırttı, aktifliği yükseltti.</li>
                 <li><strong>mertbaba_450</strong> - (2025): Geçici Hava Kuvvetleri lideri.</li>
+                <li><strong>Celil611610</strong> - (2025): Hava Kuvvetleri'nin aktifliğini ve düzenini yürütmüş bir lider.</li>
             </ul>
             
-            <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
+            <p>Havadaki denge ve karizmamız, Hava Kuvvetleri branşındaki liderler sayesinde güçlenmiştir.</p>
         `
     },
     {
@@ -200,10 +204,10 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "3 Ekim 2025 19.02",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
-        editedDate: "3 Ekim 2025 19.02",
+        editedDate: "18 Ekim 2025 20.30",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
@@ -231,6 +235,19 @@ const wikiArticles = [
                 <li>Azman67TR</li>
                 <li>Ardax3232</li>
                 <li>wqUYAGFEQF</li>
+                <li>xokingxom</li>
+                <li>Babaprosaplar_4</li>
+                <li>Celil611610</li>
+                <li>mahmutorg</li>
+                <li>Mod_Toji</li>
+                <li>Realrewnzsn</li>
+                <li>SalihFriztche47</li>
+                <li>Realrewnzsn</li>
+                <li>alper23442</li>
+                <li>RealBaconYT1256</li>
+                <li>tuglukerim</li>
+                <li>Emirxxcxx</li>
+                <li>mehmet62540</li>
             </ul>
             
             <p>TAO'nun gelişimini, bu personellere borçluyuz.</p>
@@ -245,10 +262,10 @@ const wikiArticles = [
         authorRole: "Yönetici",
         date: "2 Ekim 2025 21.23",
         category: "Wiki",
-        isEdited: false,
+        isEdited: true,
         editedBy: "SilaFriztche",
         editorRole: "Yönetici",
-        editedDate: "2 Ekim 2025 21.24",
+        editedDate: "18 Ekim 2025 20.26",
         isPinned: false,
         // MAKALENİN İÇERİĞİ
         content: `
@@ -263,6 +280,7 @@ const wikiArticles = [
                 <li><strong>EYO_KRAL125127</strong> - (2024): İnzibat'ın gelişimini yöneltti.</li>
                 <li><strong>31_Berkc</strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
                 <li><strong>tasm483</strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
+                <li><strong>xokingxom</strong> - (2025): İnzibat'ın aktifliğini yükseltti..</li>
             </ul>
             
             <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
