@@ -283,11 +283,12 @@ const wikiArticles = [
             <p>Askeri İnzibat, TAO'nun disiplinini en usta şekilde yönlendirmiştir..</p>
             
             <ul>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk lider, İnzibat'ı kurdu.</li>
-                <li><strong>EYO_KRAL125127</strong> - (2024): İnzibat'ın gelişimini yöneltti.</li>
-                <li><strong>31_Berkc</strong> - (2025): İnzibat'ı yeniden yapılandırarak düzene soktu.</li>
-                <li><strong>tasm483</strong> - (2025): İnzibat'ın disiplinini ve birimlerini düzene soktu.</li>
-                <li><strong>xokingxom</strong> - (2025): İnzibat'ın aktifliğini yükseltti..</li>
+                <li>sametreyiz_3</li>
+                <li>EYO_KRAL125127</li>
+                <li>31_Berkc</li>
+                <li>tasm483</li>
+                <li>xokingxom</li>
+                <li>EmirBey2172</li>
             </ul>
             
             <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
