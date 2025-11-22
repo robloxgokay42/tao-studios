@@ -52,11 +52,11 @@ const wikiArticles = [
             <p>Jandarma Liderliği, her dönemde farklı zorluklarla mücadele etmiş ve organizasyonun temel direklerinden biri olmuştur.</p>
             
             <ol>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk dönem lideri, Jandarma'yı kurdu.</li>
-                <li><strong>SilaFriztche</strong> - (2024): Geçici Jandarma lideri.</li>
-                <li><strong>mertbaba_450</strong> - (2025): Jandarma'ya yüksek aktiflik kazandırarak rekorlar kırdırmış bir lider.</li>
-                <li><strong>AYAZ_ECERBERFN</strong> - (2025): Jandarma'nın yükselişini sabit tutan bir lider.</li>
-                <li><strong>YeTeK01</strong> - (2025): Jandarma için çabalamış bir lider.</li>
+                <li>sametreyiz_3</li>
+                <li>SilaFriztche</li>
+                <li>mertbaba_450</li>
+                <li>AYAZ_ECERBERFN</li>
+                <li>YeTeK01</li>
             </ol>
             
             <p>Onların çabaları ve liderlikleri sayesinde TAO'nun asayişi ve trafik düzeni her zaman daha güçlü kalmıştır.</p>
@@ -85,13 +85,13 @@ const wikiArticles = [
             <p>Sınır Müfettişleri Liderliği, her dönemde farklı zorluklarla mücadele etmiş ve sınırın temel direklerinden biri olmuştur.</p>
             
             <ol>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk dönem lideri, Sınır Müfettişlerini'ni kurdu.</li>
-                <li><strong>SilaFriztche</strong> - (2024): Geçici Sınır Müfettişleri lideri.</li>
-                <li><strong>SilaFriztche</strong> - (2025): Sınır Müfettişleri'ne yüksek aktiflik kazandırıp rekorlar kırdırmıştır.</li>
-                <li><strong>TR_MERHABA31</strong> - (2025): Sınır Müfettişleri'nin aktifliğini ve düzenini korumuş bir lider.</li>
-                <li><strong>MUHAMETMERT23</strong> - (2025): Sınır Müfettişleri için çabalamış bir lider.</li>
-                <li><strong>arda_guler58587</strong> - (2025): Sınır Müfettişleri için çabalamış bir lider.</li>
-                <li><strong>alper23442</strong> - (2025): Sınır Müfettişleri'nin aktifliğini yüksek tutmuştur.</li>
+                <li>sametreyiz_3</li>
+                <li>SilaFriztche</li>
+                <li>TR_MERHABA31</li>
+                <li>MUHAMETMERT23</li>
+                <li>arda_guler58587</li>
+                <li>alper23442</li>
+                <li>mertbaba_450</li>
             </ol>
             
             <p>Onların çabaları ve liderlikleri sayesinde TAO sınırı her zaman daha iyileşmiştir.</p>
@@ -120,10 +120,11 @@ const wikiArticles = [
             <p>Özel Kuvvetler, TAO'yu en iyi şekilde korumuştur..</p>
             
             <ul>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk lider, Özel Kuvvetler'i kurdu.</li>
-                <li><strong>SilaFriztche</strong> - (2024): Geçici Özel Kuvvetler lideri.</li>
-                <li><strong>Eymenerken34</strong> - (2025): Özel Kuvvetler'i yeniden yapılandırarak düzene soktu.</li>
-                <li><strong>Babaprosaplar_4</strong> - (2025): Özel Kuvvetler'in aktifliğini yükseltip rekorlar kırdırttı.</li>
+                <li>sametreyiz_3</li>
+                <li>SilaFriztche</li>
+                <li>Eymenerken34</li>
+                <li>Babaprosaplar_4</li>
+                <li>TekKralbjk75</li>
             </ul>
             
             <p>Operasyonel taktiklerimiz, bu liderler sayesinde güçlenmiştir.</p>
@@ -152,12 +153,12 @@ const wikiArticles = [
             <p>Kara Kuvvetleri, TAO'nun kara gücünü en iyi şekilde korumuştur..</p>
             
             <ul>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk lider, Kara Kuvvetleri'ni kurdu.</li>
-                <li><strong>SilaFriztche</strong> - (2024): Geçici Kara Kuvvetleri lideri.</li>
-                <li><strong>sametreyiz_3</strong> - (2025): Kara Kuvvetleri'ni yapılandırdı.</li>
-                <li><strong>vadaaa013</strong> - (2025): Kara Kuvvetleri'nin aktifliğini düzene soktu.</li>
-                <li><strong>Yusuffriztche312</strong> - (2025): Kara Kuvvetleri'nin özelliklerini korudu.</li>
-                <li><strong>SalihFriztche47</strong> - (2025): Kara Kuvvetleri'nin aktifliğini düzene sokup çabalamış bir lider.</li>
+                <li>sametreyiz_3</li>
+                <li>SilaFriztche</li>
+                <li>vadaaa013</li>
+                <li>Yusuffriztche312</li>
+                <li>SalihFriztche47</li>
+                <li>Meto_312YT</li>
             </ul>
             
             <p>Karadaki gücümüz, bu liderler sayesinde güçlenmiştir.</p>
@@ -186,10 +187,11 @@ const wikiArticles = [
             <p>Hava Kuvvetleri, TAO'nun hava gücünü arttırmıştır..</p>
             
             <ul>
-                <li><strong>sametreyiz_3</strong> - (2022): İlk lider, Hava Kuvvetleri'ni kurdu.</li>
-                <li><strong>arda5ei</strong> - (2024): Hava Kuvvetleri'ne birçok rekor kırdırttı, aktifliği yükseltti.</li>
-                <li><strong>mertbaba_450</strong> - (2025): Geçici Hava Kuvvetleri lideri.</li>
-                <li><strong>Celil611610</strong> - (2025): Hava Kuvvetleri'nin aktifliğini ve düzenini yürütmüş bir lider.</li>
+                <li>sametreyiz_3</li>
+                <li>arda5ei</li>
+                <li>mertbaba_450</li>
+                <li>Celil611610</li>
+                <li>SEFA443315244tercYY</li>
             </ul>
             
             <p>Havadaki denge ve karizmamız, Hava Kuvvetleri branşındaki liderler sayesinde güçlenmiştir.</p>
@@ -225,6 +227,8 @@ const wikiArticles = [
                 <li>PofiTTN</li>
                 <li>arda5ei</li>
                 <li>yunm1232</li>
+                <li>ZyonX</li>
+                <li>BayHexra</li>
                 <li>tasm483</li>
                 <li>OznFriztche</li>
                 <li>mertbaba_450</li>
