@@ -290,6 +290,7 @@ const wikiArticles = [
                 <li>tasm483</li>
                 <li>xokingxom</li>
                 <li>EmirBey2172</li>
+                <li>LAVKRALI_46</li>
             </ul>
             
             <p>Disiplin gücümüz, İnzibat tarihimiz sayesinde kuvvetlenmiştir.</p>
